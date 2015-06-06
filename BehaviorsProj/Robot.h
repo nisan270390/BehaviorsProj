@@ -11,7 +11,6 @@
 
 using namespace PlayerCc;
 
-
 class Robot {
 	PlayerClient* _pc;
 	Position2dProxy* _pp;
