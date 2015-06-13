@@ -10,13 +10,15 @@
 
 #include "Plan.h"
 #include "../behaviors/Behavior.h"
+#include "../behaviors/GoForward.h"
 #include "../behaviors/TurnRight.h"
-#include "../behaviors/TurnRight.h"
+#include "../behaviors/TurnLeft.h"
+#include "../behaviors/GoBack.h"
 
 
 class PlnObstacleAvoid: public Plan {
 
-		Behavior* _beh[3];
+		Behavior* _beh[4];
 
 	public:
 		PlnObstacleAvoid(Robot* robot);

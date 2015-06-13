@@ -18,6 +18,22 @@ Robot::Robot(char* ip, int port) {
 		Read();
 }
 
+bool Robot::isFree(int startIndex, int endIndex, float distance)
+{
+	bool free = true;
+	for(int i = startIndex; i<=endIndex; i++)
+	{
+		float dist = (*_lp)[i];
+
+		if(dist < distance)
+		{
+			free = false;
+			break;
+		}
+	}
+	return free;
+}
+
 Robot::~Robot() {
 	delete _pc;
 	delete _pp;

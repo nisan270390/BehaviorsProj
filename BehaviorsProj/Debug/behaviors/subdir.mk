@@ -5,14 +5,23 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
 ../behaviors/Behavior.cpp \
+../behaviors/GoBack.cpp \
+../behaviors/GoForward.cpp \
+../behaviors/TurnLeft.cpp \
 ../behaviors/TurnRight.cpp 
 
 OBJS += \
 ./behaviors/Behavior.o \
+./behaviors/GoBack.o \
+./behaviors/GoForward.o \
+./behaviors/TurnLeft.o \
 ./behaviors/TurnRight.o 
 
 CPP_DEPS += \
 ./behaviors/Behavior.d \
+./behaviors/GoBack.d \
+./behaviors/GoForward.d \
+./behaviors/TurnLeft.d \
 ./behaviors/TurnRight.d 
 
 

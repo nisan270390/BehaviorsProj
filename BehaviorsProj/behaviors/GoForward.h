@@ -1,21 +1,15 @@
-/*
- * TurnRight.h
- *
- *  Created on: Dec 14, 2014
- *      Author: user
- */
 
 #ifndef TURNRIGHT_H_
 #define TURNRIGHT_H_
 
 #include "Behavior.h"
 
-class TurnRight: public Behavior {
+class GoForward: public Behavior {
 public:
-	TurnRight(Robot* robot);
+	GoForward(Robot* robot);
 	bool startCond()
 	{
-		if(_robot->isFree(40, 200, 0.5) )
+		if(_robot->isFree(245, 402, 0.5) )
 			return true;
 		else
 			return false;
@@ -30,9 +24,9 @@ public:
 
 	void action()
 	{
-		_robot->setSpeed(0.0, 0.3);
+		_robot->setSpeed(0.5, 0.0);
 	}
-	virtual ~TurnRight();
+	virtual ~GoForward();
 };
 
 #endif /* TURNRIGHT_H_ */

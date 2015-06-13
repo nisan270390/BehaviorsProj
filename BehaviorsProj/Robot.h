@@ -35,6 +35,9 @@ public:
 		else
 			return false;
 	}
+
+	bool isFree(int startIndex, int endIndex, float distance);
+
 	virtual ~Robot();
 };
 
