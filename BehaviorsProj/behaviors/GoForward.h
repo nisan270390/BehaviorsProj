@@ -1,6 +1,6 @@
 
-#ifndef TURNRIGHT_H_
-#define TURNRIGHT_H_
+#ifndef GOFORWARD_H_
+#define GOFORWARD_H_
 
 #include "Behavior.h"
 
