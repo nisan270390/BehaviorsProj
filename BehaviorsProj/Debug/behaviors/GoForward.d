@@ -1,4 +1,4 @@
-Robot.d: ../Robot.cpp \
+behaviors/GoForward.d: ../behaviors/GoForward.cpp \
  /usr/local/include/player-2.0/libplayerc++/playerc++.h \
  /usr/local/include/player-2.0/libplayerc/playerc.h \
  /usr/local/include/player-2.0/libplayercore/player.h \
@@ -11,7 +11,8 @@ Robot.d: ../Robot.cpp \
  /usr/local/include/player-2.0/libplayerc++/playerc++config.h \
  /usr/local/include/player-2.0/libplayerc++/playerclient.h \
  /usr/local/include/player-2.0/libplayerc++/playererror.h \
- /usr/local/include/player-2.0/libplayerc++/clientproxy.h ../Robot.h \
+ /usr/local/include/player-2.0/libplayerc++/clientproxy.h \
+ ../behaviors/GoForward.h ../behaviors/Behavior.h ../behaviors/../Robot.h \
  /usr/local/include/player-2.0/libplayerc++/playerc++.h
 
 /usr/local/include/player-2.0/libplayerc++/playerc++.h:
@@ -40,6 +41,10 @@ Robot.d: ../Robot.cpp \
 
 /usr/local/include/player-2.0/libplayerc++/clientproxy.h:
 
-../Robot.h:
+../behaviors/GoForward.h:
+
+../behaviors/Behavior.h:
+
+../behaviors/../Robot.h:
 
 /usr/local/include/player-2.0/libplayerc++/playerc++.h:

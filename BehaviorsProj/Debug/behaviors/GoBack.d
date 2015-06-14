@@ -1,4 +1,4 @@
-Manager.d: ../Manager.cpp \
+behaviors/GoBack.d: ../behaviors/GoBack.cpp \
  /usr/local/include/player-2.0/libplayerc++/playerc++.h \
  /usr/local/include/player-2.0/libplayerc/playerc.h \
  /usr/local/include/player-2.0/libplayercore/player.h \
@@ -11,12 +11,9 @@ Manager.d: ../Manager.cpp \
  /usr/local/include/player-2.0/libplayerc++/playerc++config.h \
  /usr/local/include/player-2.0/libplayerc++/playerclient.h \
  /usr/local/include/player-2.0/libplayerc++/playererror.h \
- /usr/local/include/player-2.0/libplayerc++/clientproxy.h ../Manager.h \
- ../Plans/PlnObstacleAvoid.h ../Plans/Plan.h \
- ../Plans/../behaviors/Behavior.h ../Plans/../behaviors/../Robot.h \
- /usr/local/include/player-2.0/libplayerc++/playerc++.h \
- ../Plans/../Robot.h ../Plans/../behaviors/TurnRight.h \
- ../Plans/../behaviors/Behavior.h ../Robot.h
+ /usr/local/include/player-2.0/libplayerc++/clientproxy.h \
+ ../behaviors/GoBack.h ../behaviors/Behavior.h ../behaviors/../Robot.h \
+ /usr/local/include/player-2.0/libplayerc++/playerc++.h
 
 /usr/local/include/player-2.0/libplayerc++/playerc++.h:
 
@@ -44,22 +41,10 @@ Manager.d: ../Manager.cpp \
 
 /usr/local/include/player-2.0/libplayerc++/clientproxy.h:
 
-../Manager.h:
+../behaviors/GoBack.h:
 
-../Plans/PlnObstacleAvoid.h:
+../behaviors/Behavior.h:
 
-../Plans/Plan.h:
-
-../Plans/../behaviors/Behavior.h:
-
-../Plans/../behaviors/../Robot.h:
+../behaviors/../Robot.h:
 
 /usr/local/include/player-2.0/libplayerc++/playerc++.h:
-
-../Plans/../Robot.h:
-
-../Plans/../behaviors/TurnRight.h:
-
-../Plans/../behaviors/Behavior.h:
-
-../Robot.h:

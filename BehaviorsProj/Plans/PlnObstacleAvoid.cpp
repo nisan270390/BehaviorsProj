@@ -14,6 +14,7 @@ PlnObstacleAvoid::PlnObstacleAvoid(Robot* robot):Plan(robot) {
 	_beh[2] = new TurnLeft(robot);
 	_beh[3] = new GoBack(robot);
 
+
 	//Connecting behaviors
 	_beh[0]->addBeh(_beh[1]);
 	_beh[0]->addBeh(_beh[2]);
