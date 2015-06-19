@@ -15,7 +15,7 @@ void Manager::run()
 {
 	_robot->Read();
 	if(!(_curr->startCond()))
-		return;
+		_curr = _curr->selectNext();
 	_curr->action();
 	while(_curr !=NULL)
 	{

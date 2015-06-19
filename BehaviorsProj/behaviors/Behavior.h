@@ -30,11 +30,11 @@ public:
 		//Run over vector and return first true
 		//startCond of the first behavior
 		int i;
-			for(i=0;i<4;i++)
-				if(_behVect[i]->startCond())
-					return _behVect[i];
+		for(i=0;i<4;i++)
+			if(_behVect[i]->startCond())
+				return _behVect[i];
 
-			return NULL;
+		return NULL;
 	}
 
 };

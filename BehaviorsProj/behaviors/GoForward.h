@@ -16,7 +16,7 @@ public:
 	}
 	bool stopCond()
 	{
-		if(_robot->isFree(245, 402, 0.5))
+		if(!_robot->isFree(245, 402, 0.5))
 					return true;
 				else
 					return false;
