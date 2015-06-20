@@ -12,6 +12,7 @@
 class Map{
 public :
 	Map();
+	void UpdateMap();
 	virtual ~Map();
 };
 

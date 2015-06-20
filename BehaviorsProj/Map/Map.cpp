@@ -12,10 +12,10 @@ Map::Map()
 	// TODO
 }
 
-/*Map::UpdateMap()
+Map::UpdateMap()
 {
 	// TODO
-}*/
+}
 
 Map::~Map()
 {
