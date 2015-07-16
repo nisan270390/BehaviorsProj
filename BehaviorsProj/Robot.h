@@ -37,6 +37,7 @@ public:
 	}
 
 	bool isFree(int startIndex, int endIndex, float distance);
+	double getLaserDistance(double index);
 
 	virtual ~Robot();
 };

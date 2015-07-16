@@ -4,11 +4,12 @@
 
 #include "LocalizationManager.h"
 
-LocalizationManager::LocalizationManager(Robot* rob)
+LocalizationManager::LocalizationManager(Robot* rob, Map *WolrdMap)
 {
 	_rob = rob;
 	_particles.push_back(new Particle(0, 0, 0, 1));
 	_particles_count = 1;
+	_map = WolrdMap;
 }
 
 LocalizationManager::~LocalizationManager()
@@ -30,7 +31,7 @@ void LocalizationManager::update(double deltaX, double deltaY, double deltaYaw)
 
 	for (int currParticle = 0; currParticle < _particles_count; currParticle++)
 	{
-		_particles[currParticle]->update(deltaX, deltaY, deltaYaw, _rob);
+		_particles[currParticle]->update(deltaX, deltaY, deltaYaw, _rob, _map);
 
 		double particleBelief = _particles[currParticle]->getBelief();
 
