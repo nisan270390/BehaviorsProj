@@ -22,3 +22,9 @@ Map::~Map()
 	// TODO
 }
 
+Map::IsCellEmpty(int x, int y)
+{
+	if (x==y)
+		return true;
+	return false;
+}

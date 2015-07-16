@@ -13,6 +13,7 @@ class Map{
 public :
 	Map();
 	void UpdateMap();
+	bool IsCellEmpty(int x, int y);
 	virtual ~Map();
 };
 
