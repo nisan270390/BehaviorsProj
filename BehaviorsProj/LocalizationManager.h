@@ -5,16 +5,17 @@
 #include "Particle.h"
 #include <vector>
 #include "Robot.h"
-//#include "Map.h"
+#include "Map/Map.h"
 
 class LocalizationManager {
 private:
     vector<Particle *> _particles;
     Robot* _rob;
     int _particles_count;
+    Map* _map;
 
 public:
-    LocalizationManager(Robot* rob);
+    LocalizationManager(Robot* rob, Map *WolrdMap);
 
     void update(double deltaX, double deltaY, double deltaYaw);
     bool CreateParticle(Particle* par);

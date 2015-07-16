@@ -34,6 +34,11 @@ bool Robot::isFree(int startIndex, int endIndex, float distance)
 	return free;
 }
 
+double Robot::getLaserDistance(double index)
+{
+	return (*_lp)[index];
+}
+
 Robot::~Robot() {
 	delete _pc;
 	delete _pp;
