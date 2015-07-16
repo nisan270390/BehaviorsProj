@@ -26,4 +26,5 @@ SUBDIRS := \
 . \
 behaviors \
 Plans \
+Map \
 

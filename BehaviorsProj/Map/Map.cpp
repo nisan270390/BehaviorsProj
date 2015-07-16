@@ -12,7 +12,7 @@ Map::Map()
 	// TODO
 }
 
-Map::UpdateMap()
+void Map::UpdateMap()
 {
 	// TODO
 }

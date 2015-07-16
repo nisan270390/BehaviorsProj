@@ -4,17 +4,23 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
+../LocalizationManager.cpp \
 ../Manager.cpp \
+../Particle.cpp \
 ../Robot.cpp \
 ../main.cpp 
 
 OBJS += \
+./LocalizationManager.o \
 ./Manager.o \
+./Particle.o \
 ./Robot.o \
 ./main.o 
 
 CPP_DEPS += \
+./LocalizationManager.d \
 ./Manager.d \
+./Particle.d \
 ./Robot.d \
 ./main.d 
 
