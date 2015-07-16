@@ -17,7 +17,16 @@ public:
 	ConfigManager();
 	virtual ~ConfigManager();
 	static void ReadParameters();
-
+	static std::string GetMapUrl();
+	static int GetStartLocationX();
+	static int GetstartLocationY();
+	static int GetstartLocationYaw();
+	static int GetGoalX();
+	static int GetGoalY();
+	static int GetRobotWidth();
+	static int GetRobotHeight();
+	static double GetMapResolution();
+	static double GetGridResolution();
 
 private:
 	static std::string mapUrl;

@@ -93,3 +93,44 @@ void ConfigManager::ReadParameters()
 
 	  else cout << "Unable to open file";
 }
+
+string ConfigManager::GetMapUrl()
+{
+	return mapUrl;
+}
+int ConfigManager::GetStartLocationX()
+{
+	return startLocationX;
+}
+int ConfigManager::GetstartLocationY()
+{
+	return startLocationY;
+}
+int ConfigManager::GetstartLocationYaw()
+{
+	return startLocationYaw;
+}
+int ConfigManager::GetGoalX()
+{
+	return goalX;
+}
+int ConfigManager::GetGoalY()
+{
+	return goalY;
+}
+int ConfigManager::GetRobotWidth()
+{
+	return robotWidth;
+}
+int ConfigManager::GetRobotHeight()
+{
+	return robotHeight;
+}
+double ConfigManager::GetMapResolution()
+{
+	return mapResolution;
+}
+double ConfigManager::GetGridResolution()
+{
+	return gridResolution;
+}

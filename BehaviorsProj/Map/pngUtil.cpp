@@ -36,7 +36,7 @@ void decodeOneStep(const char* filename) {
 
 	//the pixels are now in the vector "image", 4 bytes per pixel, ordered RGBARGBA..., use it as texture, draw it, ...
 }
-void ConvertMapBlackToWhiteAndWhiteToBlack(const char* filename) {
+void LoadMap(const char* filename) {
 	std::vector<unsigned char> image; //the raw pixels
 	unsigned width, height;
 	unsigned x, y;
@@ -48,22 +48,50 @@ void ConvertMapBlackToWhiteAndWhiteToBlack(const char* filename) {
 		std::cout << "decoder error " << error << ": "
 				<< lodepng_error_text(error) << std::endl;
 
-	std::vector<unsigned char> navImage; //the raw pixels
-	navImage.resize(width * height * 4);
-	unsigned char color;
-	for (y = 0; y < height; y++)
-		for (x = 0; x < width; x++) {
+	int map[width][height];
+
+	for (x = 0; x < width; x++) {
+		for (y = 0; y < height; y++){
+			// If enters the condition - meaning the cell is white - the map is empty at that point
 			if (image[y * width * 4 + x * 4 + 0]
 					|| image[y * width * 4 + x * 4 + 1]
 					|| image[y * width * 4 + x * 4 + 2])
-				color = 0;
+				map[x][y] = 0; // TODO: Change to constant
 			else
-				color = 255;
-			navImage[y * width * 4 + x * 4 + 0] = color;
-			navImage[y * width * 4 + x * 4 + 1] = color;
-			navImage[y * width * 4 + x * 4 + 2] = color;
-			navImage[y * width * 4 + x * 4 + 3] = 255;
+				map[x][y] = 1; // TODO: Change to constant
 		}
+	}
 
-	encodeOneStep("newMap.png", navImage, width, height);
+	int robotSize = MAX(ConfigManager::GetRobotHeight(),ConfigManager::GetRobotWidth());
+	double mapResulotion = ConfigManager::GetMapResolution();
+	int InflateAddition = ceil((robotSize / 2) / mapResulotion);
+
+	int inflatedMap[width][height];
+
+	for (int i = 0; i < width; i++)
+	{
+		for (int j = 0; j < height; j++)
+		{
+			if (map[i][j] == 0) //TODO: constant
+			{
+				inflatedMap[i][j] = 0;
+			}
+			//Case we need to inflate a cell
+			else
+			{
+				for (int infI = i - InflateAddition; infI < i + InflateAddition; infI++)
+				{
+					for (int infJ = j - InflateAddition; infJ < j + InflateAddition; infJ++)
+					{
+						if (infI > 0 && infI < width && infJ > 0 && infJ < height)
+						{
+							inflatedMap[infI][infJ] = 1; //TODO: const
+						}
+					}
+				}
+			}
+		}
+	}
+
+
 }
