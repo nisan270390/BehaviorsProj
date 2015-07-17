@@ -7,8 +7,7 @@
 
 #ifndef CONFIGMANAGER_H_
 #define CONFIGMANAGER_H_
-
-#define dir 8
+#define DIRECTION_VECTOR_SIZE 8
 
 #include <iostream>
 #include <fstream>
@@ -29,6 +28,8 @@ public:
 	static int GetRobotHeight();
 	static double GetMapResolution();
 	static double GetGridResolution();
+	static int* GetRowDirectionVector();
+	static int* GetColDirectionVector();
 
 private:
 	static std::string mapUrl;
@@ -41,5 +42,8 @@ private:
 	static int robotHeight;
 	static double mapResolution;
 	static double gridResolution;
+	static int rowDirectionVector[];
+	static int colDirectionVector[];
+
 };
 #endif /* CONFIGMANAGER_H_ */

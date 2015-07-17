@@ -41,7 +41,7 @@ void Node::updatePriority(int & xDest, int & yDest)
 }
 void Node::nextLevel(int & i)
 {
-	level += (dir==8?(i%2==0?10:14):10); //Calc G(n)
+	level += (DIRECTION_VECTOR_SIZE==8?(i%2==0?10:14):10); //Calc G(n)
 }
 int & Node::estimate(int & xDest, int & yDest)
 {

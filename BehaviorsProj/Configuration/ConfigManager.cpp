@@ -18,6 +18,8 @@ int ConfigManager::robotWidth;
 int ConfigManager::robotHeight;
 double ConfigManager::mapResolution;
 double ConfigManager::gridResolution;
+int ConfigManager::rowDirectionVector[] = {1, 1, 0, -1, -1, -1, 0, 1};
+int ConfigManager::colDirectionVector[] = {0, 1, 1, 1, 0, -1, -1, -1};
 
 ConfigManager::ConfigManager() {
 	// TODO Auto-generated constructor stub
@@ -133,4 +135,14 @@ double ConfigManager::GetMapResolution()
 double ConfigManager::GetGridResolution()
 {
 	return gridResolution;
+}
+
+int* ConfigManager::GetRowDirectionVector()
+{
+	return rowDirectionVector;
+}
+
+int* ConfigManager::GetColDirectionVector()
+{
+	return colDirectionVector;
 }

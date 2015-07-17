@@ -25,8 +25,8 @@ string pathFind(int & xStart, int & yStart,
 	int closed_nodes_map[width][height]; // map of closed (tried-out) nodes
 	int open_nodes_map[width][height]; // map of open (not-yet-tried) nodes
 	int dir_map[width][height]; // map of directions
-	int dx[dir]={1, 1, 0, -1, -1, -1, 0, 1};
-	int dy[dir]={0, 1, 1, 1, 0, -1, -1, -1};
+	int* dx = ConfigManager::GetRowDirectionVector();
+	int* dy = ConfigManager::GetColDirectionVector();
 	int** map = grid.GetMatrix();
 
 	priority_queue<Node> pq[2]; // list of open (not-yet-tried) nodes
@@ -79,7 +79,7 @@ string pathFind(int & xStart, int & yStart,
 			while(!(x==xStart && y==yStart))
 			{
 				j=dir_map[x][y];
-				c='0'+(j+dir/2)%dir;
+				c='0'+(j+DIRECTION_VECTOR_SIZE/2)%DIRECTION_VECTOR_SIZE;
 				path=c+path;
 				x+=dx[j];
 				y+=dy[j];
@@ -93,7 +93,7 @@ string pathFind(int & xStart, int & yStart,
 		}
 
 		// generate moves (child nodes) in all possible directions
-		for(i=0;i<dir;i++)
+		for(i=0;i<DIRECTION_VECTOR_SIZE;i++)
 		{
 			xdx=x+dx[i]; ydy=y+dy[i];
 
@@ -112,7 +112,7 @@ string pathFind(int & xStart, int & yStart,
 					open_nodes_map[xdx][ydy]=m0->getPriority();
 					pq[pqi].push(*m0);
 					// mark its parent node direction
-					dir_map[xdx][ydy]=(i+dir/2)%dir;
+					dir_map[xdx][ydy]=(i+DIRECTION_VECTOR_SIZE/2)%DIRECTION_VECTOR_SIZE;
 				}
 				// update node priority if we find better path to get this node with less priority
 				else if(open_nodes_map[xdx][ydy]>m0->getPriority())
@@ -120,7 +120,7 @@ string pathFind(int & xStart, int & yStart,
 					// update the priority info
 					open_nodes_map[xdx][ydy]=m0->getPriority();
 					// update the parent direction info
-					dir_map[xdx][ydy]=(i+dir/2)%dir;
+					dir_map[xdx][ydy]=(i+DIRECTION_VECTOR_SIZE/2)%DIRECTION_VECTOR_SIZE;
 
 					// replace the node
 					// by emptying one pq to the other one

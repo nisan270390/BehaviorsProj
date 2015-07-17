@@ -7,12 +7,57 @@
 
 #include "WayPoints.h"
 
-static int** CalculateByAStarPath(int ** mapMatrix, int* directionVector, int* path, int pathLength)
+static int** CalculateByAStarPath(int ** mapMatrix, int width, int height,
+								  string path, int locationRow, int locationCol)
 {
-	int* wayPointIndices = CalculateIndicesOfWayPoints(path, pathLength);
+	int** wayPoints;
+	int pathLength = path.length();
+	int* pathArray = new int[pathLength];
 
-	int ** a;
-	return a;
+	ConvertStringToPathArray(path, pathArray);
+
+	// Gets all the indexes of the path's way points.
+	int* wayPointIndices = CalculateIndicesOfWayPoints(pathArray, pathLength);
+	int numberOfPoints = (sizeof(wayPointIndices)/sizeof(*wayPointIndices));
+	wayPoints = new int*[numberOfPoints];
+
+	int wayPointCounter = 0;
+	int currentWayPointIndex = wayPointIndices[wayPointCounter];
+
+	for (int pathStep = 0; (pathStep < pathLength) && (wayPointCounter != numberOfPoints); pathStep++)
+	{
+		//TODO : Module to different method when there's a point object - CalculateLocationByStep(int locationRow, int locationCol, int step)
+		// Calculates the new location according to the step of the path.
+		int step = pathArray[pathStep];
+
+		locationRow += ConfigManager::GetRowDirectionVector()[step];
+		locationCol += ConfigManager::GetColDirectionVector()[step];
+
+		// Checks if the current step is a way point.
+		if (currentWayPointIndex == pathStep)
+		{
+			// Adds the way point to the array
+			wayPoints[currentWayPointIndex] = new int[2];
+			wayPoints[currentWayPointIndex][0] = locationRow;
+			wayPoints[currentWayPointIndex][1] = locationCol;
+
+			// Updates counters
+			wayPointCounter++;
+			currentWayPointIndex = wayPointIndices[wayPointCounter];
+		}
+	}
+
+	return wayPoints;
+}
+
+static void ConvertStringToPathArray(string path, int* pathArray)
+{
+	for (int index = 0; index < path.length(); index++)
+	{
+		string temp;
+		temp += path[index];
+		pathArray[index] = atoi(temp.c_str());
+	}
 }
 
 static int* CalculateIndicesOfWayPoints(int* path, int pathLength)
