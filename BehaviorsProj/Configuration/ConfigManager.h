@@ -12,6 +12,7 @@
 #include <iostream>
 #include <fstream>
 #include <string.h>
+#include "../Map/Point.h"
 
 class ConfigManager {
 public:
