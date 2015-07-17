@@ -13,7 +13,7 @@ class Particle {
 private:
     double _xPos, _yPos, _yaw;
     double _belief;
-    Map _map;
+    Map* _map;
 
 public:
     Particle(double xPos, double yPos, double yaw, double belief);

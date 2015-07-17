@@ -36,7 +36,8 @@ void decodeOneStep(const char* filename) {
 
 	//the pixels are now in the vector "image", 4 bytes per pixel, ordered RGBARGBA..., use it as texture, draw it, ...
 }
-void LoadMap(const char* filename) {
+
+Map* LoadMap(const char* filename) {
 	std::vector<unsigned char> image; //the raw pixels
 	unsigned width, height;
 	unsigned x, y;
@@ -48,54 +49,32 @@ void LoadMap(const char* filename) {
 		std::cout << "decoder error " << error << ": "
 				<< lodepng_error_text(error) << std::endl;
 
-	int map[width][height];
+	int** map = new int*[width];
 
-	for (x = 0; x < width; x++) {
-		for (y = 0; y < height; y++){
-			// If enters the condition - meaning the cell is white - the map is empty at that point
-			if (image[y * width * 4 + x * 4 + 0]
-					|| image[y * width * 4 + x * 4 + 1]
-					|| image[y * width * 4 + x * 4 + 2])
-				map[x][y] = 0; // TODO: Change to constant
-			else
-				map[x][y] = 1; // TODO: Change to constant
-		}
-	}
-
-	int robotSize = MAX(ConfigManager::GetRobotHeight(),ConfigManager::GetRobotWidth());
-	double mapResulotion = ConfigManager::GetMapResolution();
-	int InflateAddition = ceil((robotSize / 2) / mapResulotion);
-
-	int inflatedMap[width][height];
-
-	for (int i = 0; i < width; i++)
+	for (x = 0; x < width; x++)
 	{
-		for (int j = 0; j < height; j++)
+		map[x] = new int[height];
+
+		for (y = 0; y < height; y++)
 		{
-			if (map[i][j] == 0) //TODO: constant
+			if (IsPixelWhite(image, width, height, x, y))
 			{
-				inflatedMap[i][j] = 0;
+				map[x][y] = 0; // TODO: Change to constant
 			}
-			//Case we need to inflate a cell
 			else
 			{
-				for (int infI = i - InflateAddition; infI < i + InflateAddition; infI++)
-				{
-					for (int infJ = j - InflateAddition; infJ < j + InflateAddition; infJ++)
-					{
-						if (infI > 0 && infI < width && infJ > 0 && infJ < height)
-						{
-							inflatedMap[infI][infJ] = 1; //TODO: const
-						}
-					}
-				}
+				map[x][y] = 1; // TODO: Change to constant
 			}
-
-
-
-
 		}
 	}
 
+	return new Map(width, height, map);
+}
 
+bool IsPixelWhite(std::vector<unsigned char> image, int width, int height, int row, int col)
+{
+	// If enters the condition - there is not absence of color - meaning the cell is white
+	return (image[col * width * 4 + row * 4 + 0] ||
+			image[col * width * 4 + row * 4 + 1] ||
+			image[col * width * 4 + row * 4 + 2]);
 }

@@ -10,14 +10,16 @@
 
 class Grid {
 public:
-	Grid(int** matrix, int matWidth,int matHeight, int resolution);
+	Grid(int** matrix, int matWidth,int matHeight, double resolution);
 	virtual ~Grid();
 	int GetHeight();
 	int GetWidth();
 
 private:
+	int IsMatrixContainObstacle(int** matrix, int matWidth,int matHeight, int row, int col);
 	int width;
 	int height;
+	int res;
 	int** _gridMatrix;
 };
 

@@ -12,10 +12,12 @@
 #include <math.h>
 #include <algorithm>
 #include "../Configuration/ConfigManager.h"
+#include "Map.h"
 
 void encodeOneStep(const char* filename, std::vector<unsigned char> image, unsigned width, unsigned height);
 void decodeOneStep(const char* filename);
-void LoadMap(const char* filename);
+Map* LoadMap(const char* filename);
+bool IsPixelWhite(std::vector<unsigned char> image, int width, int height, int row, int col);
 
 
 

@@ -8,13 +8,22 @@
 #ifndef MAP_H_
 #define MAP_H_
 #include <libplayerc++/playerc++.h>
+#include <vector>
+#include <math.h>
+#include <algorithm>
+#include "../Configuration/ConfigManager.h"
 
 class Map{
 public :
-	Map();
-	void UpdateMap();
-	bool IsCellEmpty(int x, int y);
+	Map(int width, int height, int** map);
+	Map* Inflate();
+	bool IsCellEmpty(int row, int col);
 	virtual ~Map();
+
+private:
+	int width;
+	int height;
+	int** _map;
 };
 
 
