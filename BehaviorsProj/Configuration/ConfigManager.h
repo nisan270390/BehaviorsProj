@@ -8,6 +8,8 @@
 #ifndef CONFIGMANAGER_H_
 #define CONFIGMANAGER_H_
 
+#define dir 8
+
 #include <iostream>
 #include <fstream>
 #include <string.h>
