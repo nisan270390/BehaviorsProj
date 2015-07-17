@@ -47,6 +47,21 @@ int Grid::IsMatrixContainObstacle(int** matrix, int matWidth,int matHeight, int 
 	return isObstacle;
 }
 
+int Grid::GetHeight()
+{
+	return this->height;
+}
+
+int Grid::GetWidth()
+{
+	return this->width;
+}
+
+int** Grid::GetMatrix()
+{
+	return this->_gridMatrix;
+}
+
 Grid::~Grid() {
 	// TODO Auto-generated destructor stub
 }

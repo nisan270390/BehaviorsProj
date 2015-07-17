@@ -14,6 +14,7 @@ public:
 	virtual ~Grid();
 	int GetHeight();
 	int GetWidth();
+	int** GetMatrix();
 
 private:
 	int IsMatrixContainObstacle(int** matrix, int matWidth,int matHeight, int row, int col);
