@@ -6,10 +6,17 @@
 
 LocalizationManager::LocalizationManager(Robot* rob, Map *WolrdMap)
 {
+	Particle* par = new Particle(ConfigManager::GetStartLocationX(), ConfigManager::GetstartLocationY(), ConfigManager::GetstartLocationYaw(),  1);
 	_rob = rob;
-	_particles.push_back(new Particle(0, 0, 0, 1));
+	_particles.push_back(par);
 	_particles_count = 1;
 	_map = WolrdMap;
+
+	for (int i=0; i< 4; i++)
+	{
+		_particles.push_back(par->CreateParticle());
+		_particles_count++;
+	}
 }
 
 LocalizationManager::~LocalizationManager()
@@ -49,10 +56,7 @@ void LocalizationManager::update(double deltaX, double deltaY, double deltaYaw)
 		}
 	}
 
-	if (_particles_count < PARTICLES_MIN)
-	{
-		this->CreateParticle(bestParticle->CreateParticle());
-	}
+	this->CreateParticle(bestParticle->CreateParticle());
 }
 
 bool LocalizationManager::CreateParticle(Particle* par)

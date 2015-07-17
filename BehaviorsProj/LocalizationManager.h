@@ -6,6 +6,7 @@
 #include <vector>
 #include "Robot.h"
 #include "Map/Map.h"
+#include "/Configuration/ConfigManager.h"
 
 class LocalizationManager {
 private:

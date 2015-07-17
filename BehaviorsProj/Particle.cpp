@@ -1,4 +1,4 @@
-#define PERC 0.5
+#define RAW 2.0
 
 #include "Particle.h"
 
@@ -20,22 +20,31 @@ void Particle::update(double deltaX, double deltaY, double deltaYaw, Robot *rob,
 	_yPos += deltaY;
 	_yaw += deltaYaw;
 
-	//_belief=(PERC*calcBelief())+((1-PERC)*_belief);
+	_belief = RAW * _belief * calcBelief(rob, wolrdMap);
+
+	// Check to see if particle exceeded the maximum probability
+	if (_particleBelief > 1)
+	{
+		_particleBelief = 1;
+	}
 }
 
 double Particle::calcBelief(Robot *rob, Map *wolrdMap)
 {
 	double trueMatch = 0;
 	double falseMatch = 0;
+	double obstacleX;
+	double obstacleY;
 
-	for (int currlaser = 0; currlaser < 666; currlaser+=1)
+	for (int currlaser = 0; currlaser < 666; currlaser+=10)
 	{
-		//double laserAngle = (((currlaser) * (0.36) - 120.0) / 180.0) * 3.14159;
-
+		double laserAngle = (((currlaser) * (0.36) - 120.0) / 180.0) * 3.14159;
 		double distance = rob->getLaserDistance(currlaser);
 
-		//bool currCellIsEmpty = wolrdMap->IsCellEmpty()
-		bool currCellIsEmpty = true;
+		obstacleX = distance * cos(_yaw + laserAngle) + _xPos;
+		obstacleY = distance * sin(_yaw + laserAngle) + _yPos;
+
+		bool currCellIsEmpty = wolrdMap->IsCellEmpty(obstacleX, obstacleY);
 
 		if (distance < 4.0)
 		{
