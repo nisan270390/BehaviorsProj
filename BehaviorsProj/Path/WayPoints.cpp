@@ -10,6 +10,9 @@
 static int** CalculateByAStarPath(int ** mapMatrix, int* directionVector, int* path, int pathLength)
 {
 	int* wayPointIndices = CalculateIndicesOfWayPoints(path, pathLength);
+
+	int ** a;
+	return a;
 }
 
 static int* CalculateIndicesOfWayPoints(int* path, int pathLength)
