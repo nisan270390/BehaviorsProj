@@ -23,9 +23,9 @@ void Particle::update(double deltaX, double deltaY, double deltaYaw, Robot *rob,
 	_belief = RAW * _belief * calcBelief(rob, wolrdMap);
 
 	// Check to see if particle exceeded the maximum probability
-	if (_particleBelief > 1)
+	if (_belief > 1)
 	{
-		_particleBelief = 1;
+		_belief = 1;
 	}
 }
 
