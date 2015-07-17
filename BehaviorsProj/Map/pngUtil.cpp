@@ -90,6 +90,10 @@ void LoadMap(const char* filename) {
 					}
 				}
 			}
+
+
+
+
 		}
 	}
 
