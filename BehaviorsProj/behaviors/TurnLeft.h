@@ -6,14 +6,18 @@
 class TurnLeft: public Behavior {
 public:
 	TurnLeft(Robot* robot);
-	bool startCond()
+
+	bool startCond(Point* p);
+	bool stopCond(Point* p);
+	void action();
+	/*bool startCond(Point* p)
 	{
 		if(_robot->isFree(500, 620, 0.5) )
 			return true;
 		else
 			return false;
 	}
-	bool stopCond()
+	bool stopCond(Point* p)
 	{
 		if(_robot->isFree(245, 402, 0.5))
 					return true;
@@ -24,7 +28,7 @@ public:
 	void action()
 	{
 		_robot->setSpeed(0.0, 0.3);
-	}
+	}*/
 	virtual ~TurnLeft();
 };
 

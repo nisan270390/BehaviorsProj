@@ -19,8 +19,8 @@ protected:
 public:
 	Behavior(Robot* robot);
 	virtual ~Behavior();
-	virtual bool startCond() = 0;
-	virtual bool stopCond() = 0;
+	virtual bool startCond(Point* p) = 0;
+	virtual bool stopCond(Point* p) = 0;
 	virtual void action() = 0;
 
 	bool isInfrontWaypoint(Point* p);
@@ -28,13 +28,14 @@ public:
 	{
 		_behVect.push_back(next);
 	}
-	Behavior* selectNext()
+
+	Behavior* selectNext(Point* p)
 	{
 		//Run over vector and return first true
 		//startCond of the first behavior
 		int i;
 		for(i=0;i<4;i++)
-			if(_behVect[i]->startCond())
+			if(_behVect[i]->startCond(p))
 				return _behVect[i];
 
 		return NULL;

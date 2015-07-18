@@ -8,11 +8,11 @@
 class GoBack: public Behavior {
 public:
 	GoBack(Robot* robot);
-	bool startCond()
+	bool startCond(Point* p)
 	{
 		return true;
 	}
-	bool stopCond()
+	bool stopCond(Point* p)
 	{
 		if(_robot->isFree(245, 402, 0.5))
 					return true;

@@ -13,14 +13,14 @@
 class TurnRight: public Behavior {
 public:
 	TurnRight(Robot* robot);
-	bool startCond()
+	bool startCond(Point* p)
 	{
 		if(_robot->isFree(40, 200, 0.5) )
 			return true;
 		else
 			return false;
 	}
-	bool stopCond()
+	bool stopCond(Point* p)
 	{
 		if(_robot->isFree(245, 402, 0.5))
 					return true;

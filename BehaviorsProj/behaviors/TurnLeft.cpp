@@ -9,3 +9,21 @@ TurnLeft::TurnLeft(Robot* robot):Behavior(robot) {
 TurnLeft::~TurnLeft() {
 	// TODO Auto-generated destructor stub
 }
+
+bool TurnLeft::startCond(Point* p)
+{
+	return true;
+}
+
+bool TurnLeft::stopCond(Point* p)
+{
+	if(this->isInfrontWaypoint(p))
+		return true;
+	else
+		return false;
+}
+
+void TurnLeft::action()
+{
+	_robot->setSpeed(0.5, 0.0);
+}

@@ -31,14 +31,14 @@ void Manager::run()
 	// Get the next waypoint position
 	Point* nextPosition = this->_waypointsArr[currWayPointIndex];
 
-	if(!(_curr->startCond()))
-		_curr = _curr->selectNext();
+	if(!(_curr->startCond(nextPosition)))
+		_curr = _curr->selectNext(nextPosition);
 	_curr->action();
 
 	while (currWayPointIndex != this->_waypointsArr.size())
 	{
 		_robot->Read();
-		while(_curr->stopCond() == false)
+		while(_curr->stopCond(nextPosition) == false)
 		{
 			_curr->action();
 
@@ -50,7 +50,7 @@ void Manager::run()
 			Point* nextPosition = this->_waypointsArr[currWayPointIndex];
 		}
 
-		_curr = _curr->selectNext();
+		_curr = _curr->selectNext(nextPosition);
 		_robot->Read();
 
 	}
