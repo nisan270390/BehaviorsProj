@@ -15,3 +15,19 @@ Behavior::Behavior(Robot* robot) {
 Behavior::~Behavior() {
 	// TODO Auto-generated destructor stub
 }
+
+bool Behavior::isInfrontWaypoint(Point* p)
+{
+	double waypointX = p->GetRow();
+	double waypointY = p->GetCol();
+	double degreeToWaypoint = atan2(waypointY, waypointX) *  180 / 3.14159;
+
+	double difToRotate = degreeToWaypoint - _robot->GetYaw();
+
+	if (-2 <= difToRotate && difToRotate <= 2) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}

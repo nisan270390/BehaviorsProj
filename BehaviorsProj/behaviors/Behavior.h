@@ -9,6 +9,7 @@
 #define BEHAVIOR_H_
 #include <vector>
 #include "../Robot.h"
+#include "../Map/Point.h"
 using namespace std;
 
 class Behavior {
@@ -21,6 +22,8 @@ public:
 	virtual bool startCond() = 0;
 	virtual bool stopCond() = 0;
 	virtual void action() = 0;
+
+	bool isInfrontWaypoint(Point* p);
 	void addBeh(Behavior* next)
 	{
 		_behVect.push_back(next);

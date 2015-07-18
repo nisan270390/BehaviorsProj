@@ -31,9 +31,18 @@ void Manager::run()
 	// Get the next waypoint position
 	Point* nextPosition = this->_waypointsArr[currWayPointIndex];
 
+	if(!(_curr->startCond()))
+		_curr = _curr->selectNext();
+	_curr->action();
+
 	while (currWayPointIndex != this->_waypointsArr.size())
 	{
-		this->_robot->Read();
+		_robot->Read();
+		while(_curr->stopCond() == false)
+		{
+			_curr->action();
+
+		}
 
 		if (this->CalcDistanceFromRobot(nextPosition) < 15) //TODO: const
 		{
@@ -41,7 +50,8 @@ void Manager::run()
 			Point* nextPosition = this->_waypointsArr[currWayPointIndex];
 		}
 
-		// NissanHelpUs();
+		_curr = _curr->selectNext();
+		_robot->Read();
 
 	}
 
