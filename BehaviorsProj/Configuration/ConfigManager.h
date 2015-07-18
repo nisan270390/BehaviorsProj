@@ -20,11 +20,9 @@ public:
 	virtual ~ConfigManager();
 	static void ReadParameters();
 	static std::string GetMapUrl();
-	static int GetStartLocationX();
-	static int GetstartLocationY();
+	static Point* GetStartLocation();
 	static int GetstartLocationYaw();
-	static int GetGoalX();
-	static int GetGoalY();
+	static Point* GetGoal();
 	static int GetRobotWidth();
 	static int GetRobotHeight();
 	static double GetMapResolution();
@@ -34,11 +32,9 @@ public:
 
 private:
 	static std::string mapUrl;
-	static int startLocationX;
-	static int startLocationY;
+	static Point* startLocation;
 	static int startLocationYaw;
-	static int goalX;
-	static int goalY;
+	static Point* goal;
 	static int robotWidth;
 	static int robotHeight;
 	static double mapResolution;

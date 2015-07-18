@@ -36,11 +36,11 @@ void Point::SetCol(int col)
 	this->col = col;
 }
 
-Point Point::ConvertToRealWorld()
+/*Point Point::ConvertToRealWorld()
 {
 	Point newPoint = Point(this->row, this->col);
 	int gridResolution = ConfigManager::GetGridResolution();
 	newPoint.SetRow(ceil(this->row * gridResolution) + gridResolution / 2);
 	newPoint.SetCol(ceil(this->col * gridResolution) + gridResolution / 2);
 	return newPoint;
-}
+}*/

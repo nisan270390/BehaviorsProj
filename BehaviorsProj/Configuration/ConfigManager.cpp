@@ -9,11 +9,9 @@
 using namespace std;
 
 string ConfigManager::mapUrl;
-int ConfigManager::startLocationX;
-int ConfigManager::startLocationY;
+Point* ConfigManager::startLocation;
 int ConfigManager::startLocationYaw;
-int ConfigManager::goalX;
-int ConfigManager::goalY;
+Point* ConfigManager::goal;
 int ConfigManager::robotWidth;
 int ConfigManager::robotHeight;
 double ConfigManager::mapResolution;
@@ -58,10 +56,11 @@ void ConfigManager::ReadParameters()
 
 	    		index = value.find(" ");
 	    		num = value.substr(0, index);
-	    		startLocationX = atoi(num.c_str());
+	    		int startLocationX = atoi(num.c_str());
 	    		index = value.find(" ", index + 1);
 	    		num = value.substr(num.length(), index);
-	    		startLocationY = atoi(num.c_str());
+	    		int startLocationY = atoi(num.c_str());
+	    		startLocation = new Point(startLocationX, startLocationY);
 	    		num = value.substr(index + 1, value.length() - index);
 	    		startLocationYaw = atoi(num.c_str());
 			}
@@ -70,8 +69,9 @@ void ConfigManager::ReadParameters()
 	    		int index;
 
 	    		index = value.find(" ");
-	    		goalX = atoi(value.substr(0, index).c_str());
-	    		goalY = atoi(value.substr(index + 1, value.length() - index).c_str());
+	    		int goalX = atoi(value.substr(0, index).c_str());
+	    		int goalY = atoi(value.substr(index + 1, value.length() - index).c_str());
+	    		goal = new Point(goalX, goalY);
 			}
 	    	else if (parameter == "robotSize")
 			{
@@ -92,33 +92,27 @@ void ConfigManager::ReadParameters()
 		  }
 	    myfile.close();
 	  }
-
-	  else cout << "Unable to open file";
+	  else
+	  {
+		  cout << "Unable to open file";
+	  }
 }
 
 string ConfigManager::GetMapUrl()
 {
 	return mapUrl;
 }
-int ConfigManager::GetStartLocationX()
+Point* ConfigManager::GetStartLocation()
 {
-	return startLocationX;
-}
-int ConfigManager::GetstartLocationY()
-{
-	return startLocationY;
+	return startLocation;
 }
 int ConfigManager::GetstartLocationYaw()
 {
 	return startLocationYaw;
 }
-int ConfigManager::GetGoalX()
+Point* ConfigManager::GetGoal()
 {
-	return goalX;
-}
-int ConfigManager::GetGoalY()
-{
-	return goalY;
+	return goal;
 }
 int ConfigManager::GetRobotWidth()
 {
@@ -136,12 +130,10 @@ double ConfigManager::GetGridResolution()
 {
 	return gridResolution;
 }
-
 int* ConfigManager::GetRowDirectionVector()
 {
 	return rowDirectionVector;
 }
-
 int* ConfigManager::GetColDirectionVector()
 {
 	return colDirectionVector;
