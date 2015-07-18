@@ -10,7 +10,7 @@ Manager::Manager(Robot* robot, Plan* pln, vector<Point *> wPoints, Map* currMap)
 {
 	_robot = robot;
 	_curr = pln->getStartPoint();
-	//_waypointsArr = wPoints;
+	_waypointsArr = wPoints;
 	_Map = currMap;
 }
 void Manager::run()
