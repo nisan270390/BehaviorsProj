@@ -25,13 +25,18 @@ Map* Map::Inflate()
 	double mapResulotion = ConfigManager::GetMapResolution();
 	int InflateAddition = ceil((robotSize / 2) / mapResulotion);
 
-	int** inflatedMap = new int*[width];
+	int** inflatedMap = new int*[height];
 
-	for (int row = 0; row < width; row++)
+	// Init array
+	// TODO : change this
+	for (int row = 0; row < height; row++)
 	{
-		inflatedMap[row] = new int[height];
+		inflatedMap[row] = new int[width];
+	}
 
-		for (int col = 0; col < height; col++)
+	for (int row = 0; row < height; row++)
+	{
+		for (int col = 0; col < width; col++)
 		{
 			if (_map[row][col] == 0) //TODO: constant
 			{
@@ -44,8 +49,8 @@ Map* Map::Inflate()
 				{
 					for (int infCol = col - InflateAddition; infCol < col + InflateAddition; infCol++)
 					{
-						if ((infRow > 0 && infRow < width) &&
-							(infCol > 0 && infCol < height))
+						if ((infRow > 0 && infRow < height) &&
+							(infCol > 0 && infCol < width))
 						{
 							inflatedMap[infRow][infCol] = 1; //TODO: const
 						}
