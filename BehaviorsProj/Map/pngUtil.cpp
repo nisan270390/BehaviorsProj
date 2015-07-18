@@ -54,7 +54,7 @@ Map* LoadMap(const char* filename) {
 	for (x = 0; x < width; x++)
 	{
 		map[x] = new int[height];
-
+		std::cout << x<< std::endl;
 		for (y = 0; y < height; y++)
 		{
 			if (IsPixelWhite(image, width, height, x, y))
