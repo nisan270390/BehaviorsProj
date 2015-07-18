@@ -67,3 +67,18 @@ bool Map::IsCellEmpty(int row, int col)
 
 	return false;
 }
+
+int Map::GetHeight()
+{
+	return this->height;
+}
+
+int Map::GetWidth()
+{
+	return this->width;
+}
+
+int** Map::GetMatrix()
+{
+	return this->_map;
+}

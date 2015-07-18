@@ -18,6 +18,9 @@ public :
 	Map(int width, int height, int** map);
 	Map* Inflate();
 	bool IsCellEmpty(int row, int col);
+	int GetWidth();
+	int GetHeight();
+	int** GetMatrix();
 	virtual ~Map();
 
 private:
