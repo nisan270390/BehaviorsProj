@@ -14,6 +14,8 @@
 #include <string.h>
 #include "../Map/Point.h"
 
+class Point;
+
 class ConfigManager {
 public:
 	ConfigManager();
