@@ -38,6 +38,26 @@ double Robot::getLaserDistance(double index)
 {
 	return (*_lp)[index];
 }
+double Robot::GetXPos()
+{
+	return this->_pp->GetXPos();
+}
+double Robot::GetYPos()
+{
+	return this->_pp->GetXPos();
+}
+double Robot::GetYaw()
+{
+	return this->_pp->GetYaw();
+}
+void Robot::SetOdometry(double xPos, double yPos, double Yaw)
+{
+	this->_pp->SetOdometry(xPos, yPos, Yaw);
+}
+void Robot::SetSpeed(double angel, double speed)
+{
+	this->_pp->SetSpeed(speed,angel);
+}
 
 Robot::~Robot() {
 	delete _pc;

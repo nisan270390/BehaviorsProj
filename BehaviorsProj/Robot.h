@@ -39,6 +39,15 @@ public:
 	bool isFree(int startIndex, int endIndex, float distance);
 	double getLaserDistance(double index);
 
+	double GetXPos();
+	double GetYPos();
+	double GetYaw();
+	void SetOdometry(double xPos, double yPos, double Yaw);
+	void SetSpeed(double angel, double speed);
+
+
+
+
 	virtual ~Robot();
 };
 

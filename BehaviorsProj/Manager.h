@@ -8,15 +8,24 @@
 #ifndef MANAGER_H_
 #define MANAGER_H_
 #include "Plans/PlnObstacleAvoid.h"
+#include "Path/WayPoints.h"
+#include "Map/Map.h"
 #include "Robot.h"
+#include <vector>
 
-class Manager {
-	Behavior* _curr;
-	Robot* _robot;
+class Manager
+{
 public:
-	Manager(Robot* robot, Plan* pln);
+	Manager(Robot* robot, Plan* pln, vector<Point *> wPoints, Map* currMap);
 	void run();
 	virtual ~Manager();
+
+private:
+	double CalcDistanceFromRobot(Point* point);
+	Behavior* _curr;
+	Robot* _robot;
+	vector<Point *> _waypointsArr;
+	Map* _Map;
 };
 
 #endif /* MANAGER_H_ */
