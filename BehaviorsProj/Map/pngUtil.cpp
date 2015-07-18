@@ -39,9 +39,7 @@ void decodeOneStep(const char* filename) {
 
 Map* LoadMap(const char* filename) {
 	std::vector<unsigned char> image; //the raw pixels
-	unsigned width, height;
-	unsigned x, y;
-	//decode
+	unsigned height, width;
 	unsigned error = lodepng::decode(image, width, height, filename);
 
 	//if there's an error, display it
@@ -49,32 +47,27 @@ Map* LoadMap(const char* filename) {
 		std::cout << "decoder error " << error << ": "
 				<< lodepng_error_text(error) << std::endl;
 
-	int** map = new int*[width];
+	int** map = new int*[height];
 
-	for (x = 0; x < width; x++)
+	for (int row = 0; row < height; row++)
 	{
-		map[x] = new int[height];
-		std::cout << x<< std::endl;
-		for (y = 0; y < height; y++)
+		map[row] = new int[width];
+		std::cout << row << std::endl;
+		for (int col = 0; col < width; col++)
 		{
-			if (IsPixelWhite(image, width, height, x, y))
+			// If enters the condition - there is not absence of color - meaning the cell is white
+			if ((image[row * width * 4 + col * 4 + 0] ||
+				 image[row * width * 4 + col * 4 + 1] ||
+				 image[row * width * 4 + col * 4 + 2]))
 			{
-				map[x][y] = 0; // TODO: Change to constant
+				map[row][col] = 0; // TODO: Change to constant
 			}
 			else
 			{
-				map[x][y] = 1; // TODO: Change to constant
+				map[row][col] = 1; // TODO: Change to constant
 			}
 		}
 	}
 
 	return new Map(width, height, map);
-}
-
-bool IsPixelWhite(std::vector<unsigned char> image, int width, int height, int row, int col)
-{
-	// If enters the condition - there is not absence of color - meaning the cell is white
-	return (image[col * width * 4 + row * 4 + 0] ||
-			image[col * width * 4 + row * 4 + 1] ||
-			image[col * width * 4 + row * 4 + 2]);
 }

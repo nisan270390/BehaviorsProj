@@ -91,9 +91,9 @@ void Map::Print()
 			exit(1);
 		}
 
-		for (int row = 0; row < width; row++)
+		for (int row = 0; row < height; row++)
 		{
-			for (int col = 0; col < height; col++)
+			for (int col = 0; col < width; col++)
 			{
 				fprintf(f, "%d", this->_map[row][col]);
 			}
