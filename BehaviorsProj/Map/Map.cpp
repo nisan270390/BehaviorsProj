@@ -58,9 +58,9 @@ Map* Map::Inflate()
 	return new Map(width, height, inflatedMap);
 }
 
-bool Map::IsCellEmpty(int row, int col)
+bool Map::IsCellEmpty(Point* point)
 {
-	if (_map[row][col] == 0)
+	if (_map[point->GetRow()][point->GetCol()] == 0)
 	{
 		return true;
 	}

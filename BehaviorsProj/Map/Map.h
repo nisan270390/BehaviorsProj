@@ -17,7 +17,7 @@ class Map{
 public :
 	Map(int width, int height, int** map);
 	Map* Inflate();
-	bool IsCellEmpty(int row, int col);
+	bool IsCellEmpty(Point* point);
 	int GetWidth();
 	int GetHeight();
 	int** GetMatrix();

@@ -5,6 +5,7 @@
 
 #include"Map/Map.h"
 #include"Robot.h"
+#include "Map/Point.h"
 #include <iostream>
 
 using namespace std;

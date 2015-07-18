@@ -43,8 +43,8 @@ double Particle::calcBelief(Robot *rob, Map *wolrdMap)
 
 		obstacleX = distance * cos(_yaw + laserAngle) + _xPos;
 		obstacleY = distance * sin(_yaw + laserAngle) + _yPos;
-
-		bool currCellIsEmpty = wolrdMap->IsCellEmpty(obstacleX, obstacleY);
+		Point* obstacle = new Point(obstacleX, obstacleY);
+		bool currCellIsEmpty = wolrdMap->IsCellEmpty(obstacle);
 
 		if (distance < 4.0)
 		{
