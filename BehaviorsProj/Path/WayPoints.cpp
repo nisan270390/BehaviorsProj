@@ -7,10 +7,9 @@
 
 #include "WayPoints.h"
 
-static int** CalculateByAStarPath(int ** mapMatrix, int width, int height,
-								  string path, int locationRow, int locationCol)
+static Point** CalculateByAStarPath(string path, Point* location)
 {
-	int** wayPoints;
+	Point** wayPoints;
 	int pathLength = path.length();
 	int* pathArray = new int[pathLength];
 
@@ -19,27 +18,20 @@ static int** CalculateByAStarPath(int ** mapMatrix, int width, int height,
 	// Gets all the indexes of the path's way points.
 	int* wayPointIndices = CalculateIndicesOfWayPoints(pathArray, pathLength);
 	int numberOfPoints = (sizeof(wayPointIndices)/sizeof(*wayPointIndices));
-	wayPoints = new int*[numberOfPoints];
+	wayPoints = new Point*[numberOfPoints];
 
 	int wayPointCounter = 0;
 	int currentWayPointIndex = wayPointIndices[wayPointCounter];
 
 	for (int pathStep = 0; (pathStep < pathLength) && (wayPointCounter != numberOfPoints); pathStep++)
 	{
-		//TODO : Module to different method when there's a point object - CalculateLocationByStep(int locationRow, int locationCol, int step)
-		// Calculates the new location according to the step of the path.
-		int step = pathArray[pathStep];
-
-		locationRow += ConfigManager::GetRowDirectionVector()[step];
-		locationCol += ConfigManager::GetColDirectionVector()[step];
+		Point* newLocation = CalculateLocationByStep(location, pathArray[pathStep]);
 
 		// Checks if the current step is a way point.
 		if (currentWayPointIndex == pathStep)
 		{
 			// Adds the way point to the array
-			wayPoints[currentWayPointIndex] = new int[2];
-			wayPoints[currentWayPointIndex][0] = locationRow;
-			wayPoints[currentWayPointIndex][1] = locationCol;
+			wayPoints[currentWayPointIndex] = newLocation;
 
 			// Updates counters
 			wayPointCounter++;
@@ -98,6 +90,12 @@ static int* CalculateIndicesOfWayPoints(int* path, int pathLength)
 	AddIndexToList(indicesList, pathLength - 1, listLength);
 
 	return ConvertIndexListToArray(indicesList, listLength);
+}
+
+static Point* CalculateLocationByStep(Point* location, int step)
+{
+	return new Point(ConfigManager::GetRowDirectionVector()[step] + location->GetRow(),
+					 ConfigManager::GetColDirectionVector()[step] + location->GetCol());
 }
 
 static void AddIndexToList(indexNode* list, int newIndex, int listLength)

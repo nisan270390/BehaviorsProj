@@ -15,8 +15,9 @@ struct indexNode {
   int index;
   indexNode *next; };
 
-static int** CalculateByAStarPath(int ** mapMatrix, int width, int height, string path, int locationRow, int locationCol);
+static Point** CalculateByAStarPath(string path, Point* location);
 static int* CalculateIndicesOfWayPoints(int* path, int pathLength);
+static Point* CalculateLocationByStep(Point* location, int step);
 static void AddIndexToList(indexNode* list, int newIndex, int listLength);
 static int* ConvertIndexListToArray(indexNode* list, int listLength);
 static void ConvertStringToPathArray(string path, int* pathArray);
