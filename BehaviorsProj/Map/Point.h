@@ -7,7 +7,9 @@
 
 #ifndef POINT_H_
 #define POINT_H_
-//#include "../Configuration/ConfigManager.h"
+#include "../Configuration/ConfigManager.h"
+
+class ConfigManager;
 
 class Point {
 public:
