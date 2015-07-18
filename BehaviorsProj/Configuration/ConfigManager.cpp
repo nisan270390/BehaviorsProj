@@ -56,10 +56,10 @@ void ConfigManager::ReadParameters()
 
 	    		index = value.find(" ");
 	    		num = value.substr(0, index);
-	    		int startLocationX = atoi(num.c_str());
+	    		int startLocationY = atoi(num.c_str());
 	    		index = value.find(" ", index + 1);
 	    		num = value.substr(num.length(), index);
-	    		int startLocationY = atoi(num.c_str());
+	    		int startLocationX = atoi(num.c_str());
 	    		startLocation = new Point(startLocationX, startLocationY);
 	    		num = value.substr(index + 1, value.length() - index);
 	    		startLocationYaw = atoi(num.c_str());
@@ -69,8 +69,8 @@ void ConfigManager::ReadParameters()
 	    		int index;
 
 	    		index = value.find(" ");
-	    		int goalX = atoi(value.substr(0, index).c_str());
-	    		int goalY = atoi(value.substr(index + 1, value.length() - index).c_str());
+	    		int goalY = atoi(value.substr(0, index).c_str());
+	    		int goalX = atoi(value.substr(index + 1, value.length() - index).c_str());
 	    		goal = new Point(goalX, goalY);
 			}
 	    	else if (parameter == "robotSize")
