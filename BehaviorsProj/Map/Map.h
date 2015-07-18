@@ -11,6 +11,7 @@
 #include <vector>
 #include <math.h>
 #include <algorithm>
+#include <stdio.h>
 #include "../Configuration/ConfigManager.h"
 
 class Map{
@@ -21,6 +22,7 @@ public :
 	int GetWidth();
 	int GetHeight();
 	int** GetMatrix();
+	void Print();
 	virtual ~Map();
 
 private:

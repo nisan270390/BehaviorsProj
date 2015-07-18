@@ -82,3 +82,23 @@ int** Map::GetMatrix()
 {
 	return this->_map;
 }
+
+void Map::Print()
+{
+	FILE* f = fopen("mapPuffy.txt", "w");
+		if (f == NULL) {
+			printf("Error opening file!\n");
+			exit(1);
+		}
+
+		for (int row = 0; row < width; row++)
+		{
+			for (int col = 0; col < height; col++)
+			{
+				fprintf(f, "%d", this->_map[row][col]);
+			}
+			fprintf(f, "\n");
+		}
+
+		fclose(f);
+}
