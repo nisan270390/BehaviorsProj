@@ -21,7 +21,7 @@ public:
 	PathPlanner();
 	virtual ~PathPlanner();
 	string pathFind(int & xStart, int & yStart,
-	                int & xFinish, int & yFinish, Grid grid);
+	                int & xFinish, int & yFinish, Grid* grid);
 };
 
 #endif /* PATHPLANNER_H_ */

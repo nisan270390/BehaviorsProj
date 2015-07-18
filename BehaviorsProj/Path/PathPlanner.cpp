@@ -16,18 +16,20 @@ PathPlanner::~PathPlanner() {
 	// TODO Auto-generated destructor stub
 }
 
-string pathFind(int & xStart, int & yStart,
-	                int & xFinish, int & yFinish, Grid grid)
+string PathPlanner::pathFind(int & xStart, int & yStart,
+	                         int & xFinish, int & yFinish, Grid* grid)
 {
-	int width = grid.GetWidth();
-	int height = grid.GetHeight();
+	int width = grid->GetWidth();
+	int height = grid->GetHeight();
+	//int width = 1;
+	//int height = 2;
 
-	int closed_nodes_map[width][height]; // map of closed (tried-out) nodes
-	int open_nodes_map[width][height]; // map of open (not-yet-tried) nodes
-	int dir_map[width][height]; // map of directions
+	int closed_nodes_map[height][width]; // map of closed (tried-out) nodes
+	int open_nodes_map[height][width]; // map of open (not-yet-tried) nodes
+	int dir_map[height][width]; // map of directions
 	int* dx = ConfigManager::GetRowDirectionVector();
 	int* dy = ConfigManager::GetColDirectionVector();
-	int** map = grid.GetMatrix();
+	int** map = grid->GetMatrix();
 
 	priority_queue<Node> pq[2]; // list of open (not-yet-tried) nodes
 	int pqi; // pq index
@@ -38,9 +40,9 @@ string pathFind(int & xStart, int & yStart,
 	pqi=0;
 
 	// reset the node maps
-	for(y=0;y<height;y++)
+	for(x=0;x<height;x++)
 	{
-		for(x=0;x<width;x++)
+		for(y=0;y<width;y++)
 		{
 			closed_nodes_map[x][y]=0;
 			open_nodes_map[x][y]=0;
@@ -97,7 +99,7 @@ string pathFind(int & xStart, int & yStart,
 		{
 			xdx=x+dx[i]; ydy=y+dy[i];
 
-			if(!(xdx<0 || xdx>width-1 || ydy<0 || ydy>height-1 || map[xdx][ydy]==1
+			if(!(xdx<0 || xdx>height-1 || ydy<0 || ydy>width-1 || map[xdx][ydy]==1
 				|| closed_nodes_map[xdx][ydy]==1))
 			{
 				// generate a child node

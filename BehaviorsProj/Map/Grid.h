@@ -14,6 +14,7 @@ public:
 	virtual ~Grid();
 	int GetHeight();
 	int GetWidth();
+	void Print();
 	int** GetMatrix();
 
 private:
