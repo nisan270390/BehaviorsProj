@@ -6,7 +6,8 @@
 
 LocalizationManager::LocalizationManager(Robot* rob, Map *WolrdMap)
 {
-	Particle* par = new Particle(ConfigManager::GetStartLocation()->GetRow(), ConfigManager::GetStartLocation()->GetCol(), ConfigManager::GetstartLocationYaw(),  1);
+	Point* start = ConfigManager::GetStartLocationRealWorldResolution();
+	Particle* par = new Particle(start->GetRow(), start->GetCol(), ConfigManager::GetstartLocationYaw(),  1);
 	_rob = rob;
 	_particles.push_back(par);
 	_particles_count = 1;

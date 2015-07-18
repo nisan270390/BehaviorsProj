@@ -22,9 +22,11 @@ public:
 	virtual ~ConfigManager();
 	static void ReadParameters();
 	static std::string GetMapUrl();
-	static Point* GetStartLocation();
+	static Point* GetStartLocationMapResolution();
+	static Point* GetStartLocationRealWorldResolution();
 	static int GetstartLocationYaw();
-	static Point* GetGoal();
+	static Point* GetGoalMapResolution();
+	static Point* GetGoalRealWorldResolution();
 	static int GetRobotWidth();
 	static int GetRobotHeight();
 	static double GetMapResolution();

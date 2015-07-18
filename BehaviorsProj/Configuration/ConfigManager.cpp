@@ -102,17 +102,31 @@ string ConfigManager::GetMapUrl()
 {
 	return mapUrl;
 }
-Point* ConfigManager::GetStartLocation()
+Point* ConfigManager::GetStartLocationMapResolution()
 {
 	return startLocation;
+}
+Point* ConfigManager::GetStartLocationRealWorldResolution()
+{
+	int resolution = GetMapResolution();
+
+	return new Point(ceil((startLocation->GetRow() * resolution) + resolution / 2),
+					 ceil((startLocation->GetCol() * resolution) + resolution / 2));
 }
 int ConfigManager::GetstartLocationYaw()
 {
 	return startLocationYaw;
 }
-Point* ConfigManager::GetGoal()
+Point* ConfigManager::GetGoalMapResolution()
 {
 	return goal;
+}
+Point* ConfigManager::GetGoalRealWorldResolution()
+{
+	int resolution = GetMapResolution();
+
+	return new Point(ceil((goal->GetRow() * resolution) + resolution / 2),
+					 ceil((goal->GetCol() * resolution) + resolution / 2));
 }
 int ConfigManager::GetRobotWidth()
 {
