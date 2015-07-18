@@ -10,16 +10,17 @@
 #include "../Configuration/ConfigManager.h"
 using namespace std;
 #include <string.h>
+#include <vector>
 
-struct indexNode {
-  int index;
-  indexNode *next; };
+class WayPoints
+{
+public:
+	static vector<Point *> CalculateByDirectionalPath(std::string path, Point* location);
 
-static Point** CalculateByAStarPath(string path, Point* location);
-static int* CalculateIndicesOfWayPoints(int* path, int pathLength);
-static Point* CalculateLocationByStep(Point* location, int step);
-static void AddIndexToList(indexNode* list, int newIndex, int listLength);
-static int* ConvertIndexListToArray(indexNode* list, int listLength);
-static void ConvertStringToPathArray(string path, int* pathArray);
+private:
+	static vector<int> CalculateIndicesOfWayPoints(int* path, int pathLength);
+	static Point* CalculateLocationByStep(Point* location, int step);
+	static void ConvertStringToPathArray(std::string path, int* pathArray);
+};
 
 #endif /* WAYPOINTS_H_ */

@@ -6,32 +6,33 @@
  */
 
 #include "WayPoints.h"
+using namespace std;
 
-static Point** CalculateByAStarPath(string path, Point* location)
+vector<Point *> WayPoints::CalculateByDirectionalPath(std::string path, Point* location)
 {
-	Point** wayPoints;
+	vector<Point *> wayPoints;
 	int pathLength = path.length();
 	int* pathArray = new int[pathLength];
+	int numberOfPoints = 0;
 
 	ConvertStringToPathArray(path, pathArray);
 
 	// Gets all the indexes of the path's way points.
-	int* wayPointIndices = CalculateIndicesOfWayPoints(pathArray, pathLength);
-	int numberOfPoints = (sizeof(wayPointIndices)/sizeof(*wayPointIndices));
-	wayPoints = new Point*[numberOfPoints];
+	vector<int> wayPointIndices = CalculateIndicesOfWayPoints(pathArray, pathLength);
 
 	int wayPointCounter = 0;
 	int currentWayPointIndex = wayPointIndices[wayPointCounter];
+	Point* newLocation = location;
 
-	for (int pathStep = 0; (pathStep < pathLength) && (wayPointCounter != numberOfPoints); pathStep++)
+	for (int pathStep = 0; pathStep < pathLength; pathStep++)
 	{
-		Point* newLocation = CalculateLocationByStep(location, pathArray[pathStep]);
+		newLocation = CalculateLocationByStep(newLocation, pathArray[pathStep]);
 
 		// Checks if the current step is a way point.
 		if (currentWayPointIndex == pathStep)
 		{
 			// Adds the way point to the array
-			wayPoints[currentWayPointIndex] = newLocation;
+			wayPoints.push_back(newLocation);
 
 			// Updates counters
 			wayPointCounter++;
@@ -42,7 +43,7 @@ static Point** CalculateByAStarPath(string path, Point* location)
 	return wayPoints;
 }
 
-static void ConvertStringToPathArray(string path, int* pathArray)
+void WayPoints::ConvertStringToPathArray(std::string path, int* pathArray)
 {
 	for (int index = 0; index < path.length(); index++)
 	{
@@ -52,18 +53,11 @@ static void ConvertStringToPathArray(string path, int* pathArray)
 	}
 }
 
-static int* CalculateIndicesOfWayPoints(int* path, int pathLength)
+vector<int> WayPoints::CalculateIndicesOfWayPoints(int* path, int pathLength)
 {
-	int listLength = 0;
+	vector<int> indices;
 	int sequenceLength = 1;
 	bool isSequential;
-	indexNode* indicesList;
-	indexNode* root;
-
-	indicesList = new indexNode;
-	indicesList->index = 0;
-	indicesList->next = 0;
-	root = indicesList;
 
 	for (int index = 1; index < pathLength - 1; index ++)
 	{
@@ -79,7 +73,7 @@ static int* CalculateIndicesOfWayPoints(int* path, int pathLength)
 		if ((!isSequential) || (sequenceLength == 4)) // TODO: constant
 		{
 			// Adds the index to the list
-			AddIndexToList(indicesList, index, listLength);
+			indices.push_back(index - 1);
 
 			// Resets sequence length
 			sequenceLength = 1;
@@ -87,36 +81,13 @@ static int* CalculateIndicesOfWayPoints(int* path, int pathLength)
 	}
 
 	// Adds the last point to the path.
-	AddIndexToList(indicesList, pathLength - 1, listLength);
+	indices.push_back(pathLength - 1);
 
-	return ConvertIndexListToArray(indicesList, listLength);
+	return indices;
 }
 
-static Point* CalculateLocationByStep(Point* location, int step)
+Point* WayPoints::CalculateLocationByStep(Point* location, int step)
 {
 	return new Point(ConfigManager::GetRowDirectionVector()[step] + location->GetRow(),
 					 ConfigManager::GetColDirectionVector()[step] + location->GetCol());
-}
-
-static void AddIndexToList(indexNode* list, int newIndex, int listLength)
-{
-	indexNode* newIndexNode = new indexNode;
-	newIndexNode->index = newIndex;
-	newIndexNode->next = 0;
-	list->next = newIndexNode;
-	list = newIndexNode;
-	listLength++;
-}
-
-static int* ConvertIndexListToArray(indexNode* list, int listLength)
-{
-	int* array = new int[listLength];
-
-	for (int index = 0; index < listLength; index++)
-	{
-		array[index] = list->index;
-		list = list->next;
-	}
-
-	return array;
 }

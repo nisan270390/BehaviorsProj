@@ -12,6 +12,9 @@
 #include "Map/pngUtil.h"
 #include "Map/Grid.h"
 #include "Path/PathPlanner.h"
+#include "Path/WayPoints.h"
+#include <string.h>
+
 int main()
 {
 	ConfigManager::ReadParameters();
@@ -31,7 +34,14 @@ int main()
 	c = end->GetRow() / res;
 	d = end->GetCol() / res;
 	//string path =
-	cout << p->pathFind(a,b,c,d,grid);
+	string s = p->pathFind(a,b,c,d,grid);
+	cout << s;
+	int numberOfPoints = 0;
+	vector<Point *> wayPoints = WayPoints::CalculateByDirectionalPath(s, new Point(a,b));
+	for (int index = 0; index < wayPoints.size(); index++)
+	{
+		Point* pointy = wayPoints[index];
+	}
 
 
 
