@@ -36,11 +36,10 @@ void Point::SetCol(int col)
 	this->col = col;
 }
 
-Point* Point::ConvertToRealWorld()
+Point* Point::ConvertResolution(double resolution)
 {
 	Point* newPoint = new Point(this->row, this->col);
-	int gridResolution = ConfigManager::GetGridResolution();
-	newPoint->SetRow(ceil(this->row * gridResolution) + gridResolution / 2);
-	newPoint->SetCol(ceil(this->col * gridResolution) + gridResolution / 2);
+	newPoint->SetRow(ceil(this->row * resolution) + resolution / 2);
+	newPoint->SetCol(ceil(this->col * resolution) + resolution / 2);
 	return newPoint;
 }

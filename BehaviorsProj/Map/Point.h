@@ -19,7 +19,7 @@ public:
 	int GetCol();
 	void SetRow(int row);
 	void SetCol(int col);
-	Point* ConvertToRealWorld();
+	Point* ConvertResolution(double resolution);
 
 private:
 	int row;
