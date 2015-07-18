@@ -20,7 +20,7 @@ void Manager::run()
 		_robot->Read();
 	}
 	int res = ConfigManager::GetGridResolution() / ConfigManager::GetMapResolution();
-	int currWayPoint = 0;
+	int currWayPointIndex = 0;
 
 	//Convert All waypoints to map resolution
 	for (int j=0; j < this->_waypointsArr.size(); j++)
@@ -28,12 +28,22 @@ void Manager::run()
 		this->_waypointsArr[j] = this->_waypointsArr[j]->ConvertResolution(res);
 	}
 
-	// Get the first position of the robot (the start position)
-	Point* currentPosition = this->_waypointsArr[currWayPoint];
-
 	// Get the next waypoint position
-	currWayPoint++;
-	Point* nextPosition = this->_waypointsArr[currWayPoint];
+	Point* nextPosition = this->_waypointsArr[currWayPointIndex];
+
+	while (currWayPointIndex != this->_waypointsArr.size())
+	{
+		this->_robot->Read();
+
+		if (this->CalcDistanceFromRobot(nextPosition) < 15) //TODO: const
+		{
+			currWayPointIndex++;
+			Point* nextPosition = this->_waypointsArr[currWayPointIndex];
+		}
+
+		// NissanHelpUs();
+
+	}
 
 	/*if(!(_curr->startCond()))
 		_curr = _curr->selectNext();
