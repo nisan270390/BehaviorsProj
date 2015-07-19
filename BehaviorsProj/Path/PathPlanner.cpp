@@ -8,12 +8,9 @@
 #include "PathPlanner.h"
 
 PathPlanner::PathPlanner() {
-	// TODO Auto-generated constructor stub
-
 }
 
 PathPlanner::~PathPlanner() {
-	// TODO Auto-generated destructor stub
 }
 
 string PathPlanner::pathFind(int & xStart, int & yStart,

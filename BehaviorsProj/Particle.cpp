@@ -3,7 +3,6 @@
 #include "Particle.h"
 
 Particle::Particle(double xPos, double yPos, double yaw, double belief) {
-	// TODO Auto-generated constructor stub
 	_xPos = xPos;
 	_yPos = yPos;
 	_yaw = yaw;
@@ -11,7 +10,6 @@ Particle::Particle(double xPos, double yPos, double yaw, double belief) {
 }
 
 Particle::~Particle() {
-	// TODO Auto-generated destructor stub
 }
 
 void Particle::update(double deltaX, double deltaY, double deltaYaw, Robot *rob, Map *wolrdMap)

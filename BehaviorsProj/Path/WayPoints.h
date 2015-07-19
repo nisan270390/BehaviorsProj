@@ -8,6 +8,7 @@
 #ifndef WAYPOINTS_H_
 #define WAYPOINTS_H_
 #include "../Configuration/ConfigManager.h"
+#include "../Configuration/Constants.h"
 using namespace std;
 #include <string.h>
 #include <vector>

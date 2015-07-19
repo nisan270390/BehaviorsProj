@@ -70,7 +70,7 @@ vector<int> WayPoints::CalculateIndicesOfWayPoints(int* path, int pathLength)
 		}
 
 		// Checks whether to add the point to the path - if there's a change of yaw or the sequence is greater than the sequenceLength constant
-		if ((!isSequential) || (sequenceLength == 4)) // TODO: constant
+		if ((!isSequential) || (sequenceLength == MAX_SEQUENCE_LENGTH))
 		{
 			// Adds the index to the list
 			indices.push_back(index - 1);

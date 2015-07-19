@@ -60,11 +60,11 @@ Map* LoadMap(const char* filename) {
 				 image[row * width * 4 + col * 4 + 1] ||
 				 image[row * width * 4 + col * 4 + 2]))
 			{
-				map[row][col] = 0; // TODO: Change to constant
+				map[row][col] = FREE_CELL;
 			}
 			else
 			{
-				map[row][col] = 1; // TODO: Change to constant
+				map[row][col] = OBSTACLE_CELL;
 			}
 		}
 	}

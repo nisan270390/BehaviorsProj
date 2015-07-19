@@ -36,7 +36,4 @@ PlnObstacleAvoid::PlnObstacleAvoid(Robot* robot):Plan(robot) {
 }
 
 PlnObstacleAvoid::~PlnObstacleAvoid() {
-	// TODO Auto-generated destructor stub
-	for(int i=0;i<4;i++)
-		delete _beh[i];
 }

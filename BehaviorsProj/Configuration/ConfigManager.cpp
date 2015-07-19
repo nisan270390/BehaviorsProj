@@ -6,6 +6,7 @@
  */
 
 #include "ConfigManager.h"
+#include "Constants.h"
 using namespace std;
 
 string ConfigManager::mapUrl;
@@ -20,12 +21,9 @@ int ConfigManager::rowDirectionVector[] = {1, 1, 0, -1, -1, -1, 0, 1};
 int ConfigManager::colDirectionVector[] = {0, 1, 1, 1, 0, -1, -1, -1};
 
 ConfigManager::ConfigManager() {
-	// TODO Auto-generated constructor stub
-
 }
 
 ConfigManager::~ConfigManager() {
-	// TODO Auto-generated destructor stub
 }
 
 void ConfigManager::ReadParameters()

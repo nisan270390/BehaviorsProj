@@ -42,14 +42,14 @@ void Manager::run()
 			_curr->action();
 			_robot->Read();
 
-			if (this->CalcDistanceFromRobot(nextPosition) < 15) //TODO: const
+			if (this->CalcDistanceFromRobot(nextPosition) < DISTANCE_FROM_WAYPOINT)
 			{
 				currWayPointIndex++;
 				Point* nextPosition = this->_waypointsArr[currWayPointIndex];
 			}
 		}
 
-	/*	if (this->CalcDistanceFromRobot(nextPosition) < 15) //TODO: const
+	/*	if (this->CalcDistanceFromRobot(nextPosition) < DISTANCE_FROM_WAYPOINT)
 		{
 			currWayPointIndex++;
 			Point* nextPosition = this->_waypointsArr[currWayPointIndex];
@@ -94,5 +94,4 @@ double Manager::CalcDistanceFromRobot(Point* point)
 }
 
 Manager::~Manager() {
-	// TODO Auto-generated destructor stub
 }

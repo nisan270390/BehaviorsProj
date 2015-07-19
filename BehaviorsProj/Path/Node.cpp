@@ -16,7 +16,6 @@ Node::Node(int xp, int yp, int d, int p) {
 }
 
 Node::~Node() {
-	// TODO Auto-generated destructor stub
 }
 
 int Node::getxPos() const

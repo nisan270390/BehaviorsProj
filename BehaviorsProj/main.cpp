@@ -7,7 +7,7 @@
 #include "Robot.h"
 #include "Manager.h"
 #include "Plans/PlnObstacleAvoid.h"
-#include "Configuration/ConfigManager.h" // TODO: REMOVE AFTER TEST
+#include "Configuration/ConfigManager.h"
 #include "Map/Map.h"
 #include "Map/pngUtil.h"
 #include "Map/Grid.h"

@@ -13,6 +13,7 @@
 #include <algorithm>
 #include <stdio.h>
 #include "../Configuration/ConfigManager.h"
+#include "../Configuration/Constants.h"
 
 class Map{
 public :

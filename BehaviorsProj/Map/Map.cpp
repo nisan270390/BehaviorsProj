@@ -38,9 +38,9 @@ Map* Map::Inflate()
 	{
 		for (int col = 0; col < width; col++)
 		{
-			if (_map[row][col] == 0) //TODO: constant
+			if (_map[row][col] == FREE_CELL)
 			{
-				inflatedMap[row][col] = 0;
+				inflatedMap[row][col] = FREE_CELL;
 			}
 			//Case we need to inflate a cell
 			else
@@ -52,7 +52,7 @@ Map* Map::Inflate()
 						if ((infRow > 0 && infRow < height) &&
 							(infCol > 0 && infCol < width))
 						{
-							inflatedMap[infRow][infCol] = 1; //TODO: const
+							inflatedMap[infRow][infCol] = OBSTACLE_CELL;
 						}
 					}
 				}
@@ -65,7 +65,7 @@ Map* Map::Inflate()
 
 bool Map::IsCellEmpty(Point* point)
 {
-	if (_map[point->GetRow()][point->GetCol()] == 0)
+	if (_map[point->GetRow()][point->GetCol()] == FREE_CELL)
 	{
 		return true;
 	}
