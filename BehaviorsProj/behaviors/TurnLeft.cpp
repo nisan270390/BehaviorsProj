@@ -15,7 +15,7 @@ bool TurnLeft::startCond(Point* p)
 
 bool TurnLeft::stopCond(Point* p)
 {
-	if(this->isInfrontWaypoint(p, 15.0))
+	if(this->isInfrontWaypoint(p, 30.0))
 		return true;
 	else
 		return false;

@@ -36,7 +36,9 @@ bool Behavior::isInfrontWaypoint(Point* p, double degree)
 
 	double difToRotate = (degreeToWaypoint - (_robot->GetYaw() * 180 / PI ));
 
-	cout << "degreeToWaypoint :" << degreeToWaypoint << "(" << _robot->GetXPos() << "," << _robot->GetYPos()<< " Curr:" << _robot->GetYaw() * 180 / PI << "), Diff: " << difToRotate << endl;
+	cout << "degreeToWaypoint :" << degreeToWaypoint << "(" << _robot->GetXPos() << "," << _robot->GetYPos()<<
+				" Curr:" << _robot->GetYaw() * 180 / PI << "), Diff: " << difToRotate <<
+				" 	Popint: (" << p->GetCol() << "," << p->GetRow()<< " Curr:" << ")" << endl;
 
 	if (-degree <= difToRotate && difToRotate <= degree) {
 		return true;
