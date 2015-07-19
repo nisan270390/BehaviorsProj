@@ -24,13 +24,13 @@ public:
 		_pp->SetSpeed(xSpeed, angularSpeed);
 	}
 	bool isRightFree() {
-		if ((*_lp)[50] > 0.5)
+		if ((*_lp)[LASER_RIGHT_INDEX] > LASER_MIN_DISTANCE)
 			return true;
 		else
 			return false;
 	}
 	bool isForwardFree() {
-		if ((*_lp)[332] > 0.5)
+		if ((*_lp)[LASER_FORWARD_INDEX] > LASER_MIN_DISTANCE)
 			return true;
 		else
 			return false;

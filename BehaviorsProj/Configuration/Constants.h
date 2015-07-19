@@ -8,6 +8,8 @@
 
 // Movement
 #define DISTANCE_FROM_WAYPOINT 15
+#define LASER_RIGHT_INDEX 50
+#define LASER_FORWARD_INDEX 332
 #define PI 3.14159
 
 #endif
