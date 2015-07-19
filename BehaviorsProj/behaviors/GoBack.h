@@ -4,15 +4,16 @@
 #define GOBACK_H_
 
 #include "Behavior.h"
+#include "../Particle.h"
 
 class GoBack: public Behavior {
 public:
 	GoBack(Robot* robot);
-	bool startCond(Point* p)
+	bool startCond(Point* p, Particle* par)
 	{
 		return true;
 	}
-	bool stopCond(Point* p)
+	bool stopCond(Point* p, Particle* par)
 	{
 		if(_robot->isFree(245, 402, 0.5))
 					return true;

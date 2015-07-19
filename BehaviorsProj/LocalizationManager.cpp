@@ -2,8 +2,9 @@
 
 LocalizationManager::LocalizationManager(Robot* rob, Map *WolrdMap)
 {
-	Point* start = ConfigManager::GetStartLocationRealWorldResolution();
-	Particle* par = new Particle(start->GetRow(), start->GetCol(), ConfigManager::GetstartLocationYaw(),  1);
+	Particle* par = new Particle(ConfigManager::GetStartLocationRealWorldResolution()->GetCol() / 100.0,
+			-ConfigManager::GetStartLocationRealWorldResolution()->GetRow() / 100.0,
+			 ConfigManager::GetstartLocationYaw()  * PI / 180.0,  1);
 	_rob = rob;
 	_particles.push_back(par);
 	_particles_count = 1;

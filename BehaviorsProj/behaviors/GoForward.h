@@ -4,6 +4,7 @@
 
 #include "Behavior.h"
 #include "../Map/Point.h"
+#include "../Particle.h"
 
 class GoForward: public Behavior {
 public:
@@ -27,8 +28,8 @@ public:
 	{
 		_robot->setSpeed(0.5, 0.0);
 	}*/
-	bool startCond(Point* p);
-	bool stopCond(Point* p);
+	bool startCond(Point* p, Particle* par);
+	bool stopCond(Point* p, Particle* par);
 	void action();
 	virtual ~GoForward();
 };

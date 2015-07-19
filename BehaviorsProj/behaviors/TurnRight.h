@@ -9,18 +9,19 @@
 #define TURNRIGHT_H_
 
 #include "Behavior.h"
+#include "../Particle.h"
 
 class TurnRight: public Behavior {
 public:
 	TurnRight(Robot* robot);
-	bool startCond(Point* p)
+	bool startCond(Point* p,  Particle* par)
 	{
 		if(_robot->isFree(40, 200, 0.5) )
 			return true;
 		else
 			return false;
 	}
-	bool stopCond(Point* p)
+	bool stopCond(Point* p,  Particle* par)
 	{
 		if(_robot->isFree(245, 402, 0.5))
 					return true;

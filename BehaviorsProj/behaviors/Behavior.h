@@ -10,6 +10,7 @@
 #include <vector>
 #include "../Robot.h"
 #include "../Map/Point.h"
+#include "../Particle.h"
 using namespace std;
 
 class Behavior {
@@ -19,23 +20,23 @@ protected:
 public:
 	Behavior(Robot* robot);
 	virtual ~Behavior();
-	virtual bool startCond(Point* p) = 0;
-	virtual bool stopCond(Point* p) = 0;
+	virtual bool startCond(Point* p, Particle* par) = 0;
+	virtual bool stopCond(Point* p, Particle* par) = 0;
 	virtual void action() = 0;
 
-	bool isInfrontWaypoint(Point* p, double degree);
+	bool isInfrontWaypoint(Point* p, double degree, Particle* par);
 	void addBeh(Behavior* next)
 	{
 		_behVect.push_back(next);
 	}
 
-	Behavior* selectNext(Point* p)
+	Behavior* selectNext(Point* p, Particle* par)
 	{
 		//Run over vector and return first true
 		//startCond of the first behavior
 		int i;
 		for(i=0;i<4;i++)
-			if(_behVect[i]->startCond(p))
+			if(_behVect[i]->startCond(p, par))
 				return _behVect[i];
 
 		return NULL;

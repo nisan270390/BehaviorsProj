@@ -11,6 +11,8 @@
 #include "Path/WayPoints.h"
 #include "Map/Map.h"
 #include "Robot.h"
+#include "LocalizationManager.h"
+#include "Particle.h"
 #include <vector>
 
 class Manager
@@ -26,6 +28,7 @@ private:
 	Robot* _robot;
 	vector<Point *> _waypointsArr;
 	Map* _Map;
+	LocalizationManager* _localManger;
 };
 
 #endif /* MANAGER_H_ */

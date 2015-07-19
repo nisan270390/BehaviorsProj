@@ -12,6 +12,7 @@ Manager::Manager(Robot* robot, Plan* pln, vector<Point *> wPoints, Map* currMap)
 	_curr = pln->getStartPoint();
 	_waypointsArr = wPoints;
 	_Map = currMap;
+	_localManger = new LocalizationManager(robot, currMap);
 }
 void Manager::run()
 {
@@ -39,17 +40,17 @@ void Manager::run()
 	// Get the next waypoint position
 	Point* nextPosition = this->_waypointsArr[currWayPointIndex];
 
+	double XPos = _robot->GetXPos();
+	double YPos = -_robot->GetYPos();
+	double Yaw = _robot->GetYaw();
+	Particle* par = _localManger->getBestParticle();
+
 	// running until we hit the way point
 	while (currWayPointIndex != this->_waypointsArr.size())
 	{
-		/*while (true)
-		{
-			_curr->action();
-			_robot->Read();
-			cout << "(" << _robot->GetXPos() << "," << _robot->GetYPos() << " Yaw: " << _robot->GetYaw() << endl;
-		}*/
+
 		// checking whether the current behaviors stop condition fulfills
-		while(!(_curr->stopCond(nextPosition)))
+		while(!(_curr->stopCond(nextPosition, par)))
 		{
 			cout << " Distance:" << CalcDistanceFromRobot(nextPosition) << endl;
 			// Entered the while meaning the behavior can react - running behavior
@@ -57,6 +58,18 @@ void Manager::run()
 
 			// Reading new robot's sensors
 			_robot->Read();
+
+			double delteXPos = _robot->GetXPos() - XPos;
+			double delteYPos = -_robot->GetYPos() - YPos;
+			double delteYaw = - _robot->GetYaw() - Yaw;
+			_localManger->update(delteXPos, delteYPos, delteYaw);
+
+			XPos = _robot->GetXPos();
+			YPos = -_robot->GetYPos();
+			Yaw = _robot->GetYaw();
+
+			par = _localManger->getBestParticle();
+
 
 			//cout << "(" << _robot->GetXPos() << "," << _robot->GetYPos() << " Yaw: " << _robot->GetYaw() << " D: ";
 			//cout << this->CalcDistanceFromRobot(nextPosition) << endl;
@@ -70,7 +83,7 @@ void Manager::run()
 		}
 
 		_robot->setSpeed(0.0, 0.0);
-		_curr = _curr->selectNext(nextPosition);
+		_curr = _curr->selectNext(nextPosition, par);
 		_robot->Read();
 
 	}
@@ -94,8 +107,13 @@ void Manager::run()
 
 double Manager::CalcDistanceFromRobot(Point* point)
 {
-	double xRobot = this->_robot->GetXPos();
-	double yRobot = -this->_robot->GetYPos();
+	//double xRobot = this->_robot->GetXPos();
+	//double yRobot = -this->_robot->GetYPos();
+
+	Particle* par = _localManger->getBestParticle();
+	double xRobot = par->getX();
+	double yRobot = -par->getY();
+
 
 	//Point* p = point->ConvertResolution(ConfigManager::GetMapResolution());
 	double xPoint =	point->GetCol() * CM_TO_METER;
