@@ -1,7 +1,3 @@
-#define MIN_BELIEF 0.2
-#define PARTICLES_MIN 30
-#define PARTICLES_MAX 100
-
 #include "LocalizationManager.h"
 
 LocalizationManager::LocalizationManager(Robot* rob, Map *WolrdMap)

@@ -1,5 +1,3 @@
-#define RAW 2.0
-
 #include "Particle.h"
 
 Particle::Particle(double xPos, double yPos, double yaw, double belief) {
@@ -36,7 +34,7 @@ double Particle::calcBelief(Robot *rob, Map *wolrdMap)
 
 	for (int currlaser = 0; currlaser < 666; currlaser+=10)
 	{
-		double laserAngle = (((currlaser) * (0.36) - 120.0) / 180.0) * 3.14159;
+		double laserAngle = (((currlaser) * (0.36) - 120.0) / 180.0) * PI;
 		double distance = rob->getLaserDistance(currlaser);
 
 		obstacleX = distance * cos(_yaw + laserAngle) + _xPos;
@@ -64,7 +62,7 @@ Particle* Particle::CreateParticle()
 {
 	double newX = _xPos + (rand() % 21) / 100;
 	double newY = _yPos + (rand() % 21) / 100;
-	double newYaw = _yaw + (rand() % 61 - 30.0) * 3.14159 / 180.0;
+	double newYaw = _yaw + (rand() % 61 - 30.0) * PI / 180.0;
 	return new Particle(newX, newY, newYaw, _belief);
 }
 

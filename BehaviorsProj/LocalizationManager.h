@@ -7,6 +7,7 @@
 #include "Robot.h"
 #include "Map/Map.h"
 #include "Configuration/ConfigManager.h"
+#include "Configuration/Constants.h"
 
 class LocalizationManager {
 private:

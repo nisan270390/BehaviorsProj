@@ -6,6 +6,7 @@
 #include"Map/Map.h"
 #include"Robot.h"
 #include "Map/Point.h"
+#include "Configuration/Constants.h"
 #include <iostream>
 
 using namespace std;
