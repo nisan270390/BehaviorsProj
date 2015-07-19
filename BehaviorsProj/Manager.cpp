@@ -23,8 +23,8 @@ void Manager::run()
 
 	// init start point
 	_robot->SetOdometry(ConfigManager::GetStartLocationRealWorldResolution()->GetCol() / 100.0,
-					ConfigManager::GetStartLocationRealWorldResolution()->GetRow() / 100.0,
-					ConfigManager::GetstartLocationYaw() * PI / 180.0);
+					-ConfigManager::GetStartLocationRealWorldResolution()->GetRow() / 100.0,
+					 ConfigManager::GetstartLocationYaw()  * PI / 180.0);
 	_robot->Read();
 
 	int res = ConfigManager::GetGridResolution();
@@ -42,6 +42,12 @@ void Manager::run()
 	// running until we hit the way point
 	while (currWayPointIndex != this->_waypointsArr.size())
 	{
+		/*while (true)
+		{
+			_curr->action();
+			_robot->Read();
+			cout << "(" << _robot->GetXPos() << "," << _robot->GetYPos() << " Yaw: " << _robot->GetYaw() << endl;
+		}*/
 		// checking whether the current behaviors stop condition fulfills
 		while(!(_curr->stopCond(nextPosition)))
 		{
@@ -89,7 +95,7 @@ void Manager::run()
 double Manager::CalcDistanceFromRobot(Point* point)
 {
 	double xRobot = this->_robot->GetXPos();
-	double yRobot = this->_robot->GetYPos();
+	double yRobot = -this->_robot->GetYPos();
 
 	//Point* p = point->ConvertResolution(ConfigManager::GetMapResolution());
 	double xPoint =	point->GetCol() * CM_TO_METER;
