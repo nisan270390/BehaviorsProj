@@ -106,7 +106,7 @@ Point* ConfigManager::GetStartLocationMapResolution()
 }
 Point* ConfigManager::GetStartLocationRealWorldResolution()
 {
-	int resolution = GetMapResolution();
+	double resolution = GetMapResolution();
 
 	return new Point(ceil((startLocation->GetRow() * resolution) + resolution / 2),
 					 ceil((startLocation->GetCol() * resolution) + resolution / 2));
@@ -121,7 +121,7 @@ Point* ConfigManager::GetGoalMapResolution()
 }
 Point* ConfigManager::GetGoalRealWorldResolution()
 {
-	int resolution = GetMapResolution();
+	double resolution = GetMapResolution();
 
 	return new Point(ceil((goal->GetRow() * resolution) + resolution / 2),
 					 ceil((goal->GetCol() * resolution) + resolution / 2));

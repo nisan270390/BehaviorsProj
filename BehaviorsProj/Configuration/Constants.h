@@ -16,5 +16,6 @@
 #define LASER_MIN_DISTANCE 0.5
 #define RAW 2.0
 #define PI 3.14159
+#define CM_TO_METER 0.01
 
 #endif

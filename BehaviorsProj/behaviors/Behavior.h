@@ -23,7 +23,7 @@ public:
 	virtual bool stopCond(Point* p) = 0;
 	virtual void action() = 0;
 
-	bool isInfrontWaypoint(Point* p);
+	bool isInfrontWaypoint(Point* p, double degree);
 	void addBeh(Behavior* next)
 	{
 		_behVect.push_back(next);

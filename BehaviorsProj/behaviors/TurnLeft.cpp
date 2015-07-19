@@ -15,7 +15,7 @@ bool TurnLeft::startCond(Point* p)
 
 bool TurnLeft::stopCond(Point* p)
 {
-	if(this->isInfrontWaypoint(p))
+	if(this->isInfrontWaypoint(p, 15.0))
 		return true;
 	else
 		return false;
@@ -23,5 +23,5 @@ bool TurnLeft::stopCond(Point* p)
 
 void TurnLeft::action()
 {
-	_robot->setSpeed(0.0, 0.3);
+	_robot->setSpeed(0.0, 0.5);
 }

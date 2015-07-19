@@ -44,7 +44,7 @@ double Robot::GetXPos()
 }
 double Robot::GetYPos()
 {
-	return this->_pp->GetXPos();
+	return this->_pp->GetYPos();
 }
 double Robot::GetYaw()
 {

@@ -16,17 +16,29 @@ Behavior::~Behavior() {
 	// TODO Auto-generated destructor stub
 }
 
-bool Behavior::isInfrontWaypoint(Point* p)
+bool Behavior::isInfrontWaypoint(Point* p, double degree)
 {
-	double waypointX = p->GetRow() - _robot->GetXPos();
-	double waypointY = p->GetCol() - _robot->GetYPos();
-	double degreeToWaypoint = atan2(waypointY, waypointX) * 180 / 3.14159 ;
+/*	double waypointX = p->GetCol() * CM_TO_METER - _robot->GetXPos();
+	double waypointY = p->GetRow() * CM_TO_METER - _robot->GetYPos();
+	double degreeToWaypoint = atan2(waypointY, waypointX) * 180 / PI ;
 
-	double difToRotate = degreeToWaypoint - _robot->GetYaw() * 180 / 3.14159;
+	double difToRotate = abs(degreeToWaypoint) - (_robot->GetYaw() * 180 / PI );
 
-	cout << "degreeToWaypoint :" << degreeToWaypoint << "         difToRotate :" << difToRotate << "     YAW : " << _robot->GetYaw() << endl;
+//	cout << "degreeToWaypoint :" << degreeToWaypoint << "         difToRotate :" << difToRotate << "     YAW : " << _robot->GetYaw() << endl;
+	cout << "degreeToWaypoint :" << degreeToWaypoint << "(" << _robot->GetXPos() << "," << _robot->GetYPos() << "), Diff: " << difToRotate;
+*/
+	double waypointX = _robot->GetXPos() - p->GetCol() * CM_TO_METER;
+	double waypointY = _robot->GetYPos() - p->GetRow() * CM_TO_METER;
+	int degreeToWaypoint = (atan2(waypointX, waypointY) * 180 / PI);
+	degreeToWaypoint = 180 - degreeToWaypoint;
 
-	if (-2 <= difToRotate && difToRotate <= 2) {
+	degreeToWaypoint = (degreeToWaypoint + 360) % 360;
+
+	double difToRotate = (degreeToWaypoint - (_robot->GetYaw() * 180 / PI ));
+
+	cout << "degreeToWaypoint :" << degreeToWaypoint << "(" << _robot->GetXPos() << "," << _robot->GetYPos()<< " Curr:" << _robot->GetYaw() * 180 / PI << "), Diff: " << difToRotate << endl;
+
+	if (-degree <= difToRotate && difToRotate <= degree) {
 		return true;
 	}
 	else {
