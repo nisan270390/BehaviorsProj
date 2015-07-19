@@ -13,6 +13,7 @@ behaviors/GoForward.d: ../behaviors/GoForward.cpp \
  /usr/local/include/player-2.0/libplayerc++/playererror.h \
  /usr/local/include/player-2.0/libplayerc++/clientproxy.h \
  ../behaviors/GoForward.h ../behaviors/Behavior.h ../behaviors/../Robot.h \
+ ../behaviors/../Configuration/Constants.h \
  /usr/local/include/player-2.0/libplayerc++/playerc++.h \
  ../behaviors/../Map/Point.h \
  ../behaviors/../Map/../Configuration/ConfigManager.h \
@@ -49,6 +50,8 @@ behaviors/GoForward.d: ../behaviors/GoForward.cpp \
 ../behaviors/Behavior.h:
 
 ../behaviors/../Robot.h:
+
+../behaviors/../Configuration/Constants.h:
 
 /usr/local/include/player-2.0/libplayerc++/playerc++.h:
 

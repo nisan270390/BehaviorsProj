@@ -13,6 +13,7 @@ behaviors/TurnRight.d: ../behaviors/TurnRight.cpp \
  /usr/local/include/player-2.0/libplayerc++/playererror.h \
  /usr/local/include/player-2.0/libplayerc++/clientproxy.h \
  ../behaviors/TurnRight.h ../behaviors/Behavior.h ../behaviors/../Robot.h \
+ ../behaviors/../Configuration/Constants.h \
  /usr/local/include/player-2.0/libplayerc++/playerc++.h \
  ../behaviors/../Map/Point.h \
  ../behaviors/../Map/../Configuration/ConfigManager.h \
@@ -49,6 +50,8 @@ behaviors/TurnRight.d: ../behaviors/TurnRight.cpp \
 ../behaviors/Behavior.h:
 
 ../behaviors/../Robot.h:
+
+../behaviors/../Configuration/Constants.h:
 
 /usr/local/include/player-2.0/libplayerc++/playerc++.h:
 

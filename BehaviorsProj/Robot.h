@@ -7,6 +7,7 @@
 
 #ifndef ROBOT_H_
 #define ROBOT_H_
+#include "Configuration/Constants.h"
 #include <libplayerc++/playerc++.h>
 
 using namespace PlayerCc;

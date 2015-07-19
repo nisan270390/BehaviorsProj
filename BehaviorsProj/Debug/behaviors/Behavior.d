@@ -13,7 +13,11 @@ behaviors/Behavior.d: ../behaviors/Behavior.cpp \
  /usr/local/include/player-2.0/libplayerc++/playererror.h \
  /usr/local/include/player-2.0/libplayerc++/clientproxy.h \
  ../behaviors/Behavior.h ../behaviors/../Robot.h \
- /usr/local/include/player-2.0/libplayerc++/playerc++.h
+ ../behaviors/../Configuration/Constants.h \
+ /usr/local/include/player-2.0/libplayerc++/playerc++.h \
+ ../behaviors/../Map/Point.h \
+ ../behaviors/../Map/../Configuration/ConfigManager.h \
+ ../behaviors/../Map/../Configuration/../Map/Point.h
 
 /usr/local/include/player-2.0/libplayerc++/playerc++.h:
 
@@ -45,4 +49,12 @@ behaviors/Behavior.d: ../behaviors/Behavior.cpp \
 
 ../behaviors/../Robot.h:
 
+../behaviors/../Configuration/Constants.h:
+
 /usr/local/include/player-2.0/libplayerc++/playerc++.h:
+
+../behaviors/../Map/Point.h:
+
+../behaviors/../Map/../Configuration/ConfigManager.h:
+
+../behaviors/../Map/../Configuration/../Map/Point.h:
