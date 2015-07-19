@@ -26,5 +26,7 @@ SUBDIRS := \
 . \
 behaviors \
 Plans \
+Path \
 Map \
+Configuration \
 
