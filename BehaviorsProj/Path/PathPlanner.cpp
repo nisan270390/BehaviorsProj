@@ -18,8 +18,6 @@ string PathPlanner::pathFind(int & xStart, int & yStart,
 {
 	int width = grid->GetWidth();
 	int height = grid->GetHeight();
-	//int width = 1;
-	//int height = 2;
 
 	int closed_nodes_map[height][width]; // map of closed (tried-out) nodes
 	int open_nodes_map[height][width]; // map of open (not-yet-tried) nodes
