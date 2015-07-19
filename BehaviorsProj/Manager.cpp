@@ -37,18 +37,23 @@ void Manager::run()
 
 	while (currWayPointIndex != this->_waypointsArr.size())
 	{
-		_robot->Read();
 		while(_curr->stopCond(nextPosition) == false)
 		{
 			_curr->action();
+			_robot->Read();
 
+			if (this->CalcDistanceFromRobot(nextPosition) < 15) //TODO: const
+			{
+				currWayPointIndex++;
+				Point* nextPosition = this->_waypointsArr[currWayPointIndex];
+			}
 		}
 
-		if (this->CalcDistanceFromRobot(nextPosition) < 15) //TODO: const
+	/*	if (this->CalcDistanceFromRobot(nextPosition) < 15) //TODO: const
 		{
 			currWayPointIndex++;
 			Point* nextPosition = this->_waypointsArr[currWayPointIndex];
-		}
+		}*/
 
 		_curr = _curr->selectNext(nextPosition);
 		_robot->Read();

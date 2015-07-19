@@ -18,11 +18,13 @@ Behavior::~Behavior() {
 
 bool Behavior::isInfrontWaypoint(Point* p)
 {
-	double waypointX = p->GetRow();
-	double waypointY = p->GetCol();
-	double degreeToWaypoint = atan2(waypointY, waypointX) *  180 / 3.14159;
+	double waypointX = p->GetRow() - _robot->GetXPos();
+	double waypointY = p->GetCol() - _robot->GetYPos();
+	double degreeToWaypoint = atan2(waypointY, waypointX) * 180 / 3.14159 ;
 
-	double difToRotate = degreeToWaypoint - _robot->GetYaw();
+	double difToRotate = degreeToWaypoint - _robot->GetYaw() * 180 / 3.14159;
+
+	cout << "degreeToWaypoint :" << degreeToWaypoint << "         difToRotate :" << difToRotate << "     YAW : " << _robot->GetYaw() << endl;
 
 	if (-2 <= difToRotate && difToRotate <= 2) {
 		return true;

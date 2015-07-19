@@ -9,7 +9,6 @@
 
 PlnObstacleAvoid::PlnObstacleAvoid(Robot* robot):Plan(robot) {
 	//Creating Behaviors
-	Behavior* b = new GoForward(robot);
 	_beh[0] = new GoForward(robot);
 	_beh[1] = new TurnLeft(robot);
 	//_beh[2] = new TurnRight(robot);

@@ -25,5 +25,5 @@ bool TurnLeft::stopCond(Point* p)
 
 void TurnLeft::action()
 {
-	_robot->setSpeed(0.5, 0.0);
+	_robot->setSpeed(0.0, 0.3);
 }
