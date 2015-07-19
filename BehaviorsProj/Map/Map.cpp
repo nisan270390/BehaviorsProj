@@ -90,7 +90,7 @@ int** Map::GetMatrix()
 
 void Map::Print()
 {
-	FILE* f = fopen("mapPuffy.txt", "w");
+	FILE* f = fopen("mapPath.txt", "w");
 		if (f == NULL) {
 			printf("Error opening file!\n");
 			exit(1);

@@ -68,7 +68,7 @@ int** Grid::GetMatrix()
 
 void Grid::Print()
 {
-	FILE* f = fopen("mapPuffy.txt", "w");
+	FILE* f = fopen("gridPath.txt", "w");
 		if (f == NULL) {
 			printf("Error opening file!\n");
 			exit(1);
