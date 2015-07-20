@@ -17,7 +17,10 @@ behaviors/TurnRight.d: ../behaviors/TurnRight.cpp \
  /usr/local/include/player-2.0/libplayerc++/playerc++.h \
  ../behaviors/../Map/Point.h \
  ../behaviors/../Map/../Configuration/ConfigManager.h \
- ../behaviors/../Map/../Configuration/../Map/Point.h
+ ../behaviors/../Map/../Configuration/../Map/Point.h \
+ ../behaviors/../Particle.h ../behaviors/../Map/Map.h \
+ ../behaviors/../Map/../Configuration/Constants.h ../behaviors/../Robot.h \
+ ../behaviors/../Map/Point.h
 
 /usr/local/include/player-2.0/libplayerc++/playerc++.h:
 
@@ -60,3 +63,13 @@ behaviors/TurnRight.d: ../behaviors/TurnRight.cpp \
 ../behaviors/../Map/../Configuration/ConfigManager.h:
 
 ../behaviors/../Map/../Configuration/../Map/Point.h:
+
+../behaviors/../Particle.h:
+
+../behaviors/../Map/Map.h:
+
+../behaviors/../Map/../Configuration/Constants.h:
+
+../behaviors/../Robot.h:
+
+../behaviors/../Map/Point.h:

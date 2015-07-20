@@ -52,16 +52,14 @@ void Manager::run()
 		// checking whether the current behaviors stop condition fulfills
 		while(!(_curr->stopCond(nextPosition, par)))
 		{
-			cout << " Distance:" << CalcDistanceFromRobot(nextPosition) << endl;
 			// Entered the while meaning the behavior can react - running behavior
 			_curr->action();
-
 			// Reading new robot's sensors
 			_robot->Read();
-
+			_robot->setSpeed(0.0,0.0);
 			double delteXPos = _robot->GetXPos() - XPos;
 			double delteYPos = -_robot->GetYPos() - YPos;
-			double delteYaw = - _robot->GetYaw() - Yaw;
+			double delteYaw = _robot->GetYaw() - Yaw;
 			_localManger->update(delteXPos, delteYPos, delteYaw);
 
 			XPos = _robot->GetXPos();
@@ -69,7 +67,6 @@ void Manager::run()
 			Yaw = _robot->GetYaw();
 
 			par = _localManger->getBestParticle();
-
 
 			//cout << "(" << _robot->GetXPos() << "," << _robot->GetYPos() << " Yaw: " << _robot->GetYaw() << " D: ";
 			//cout << this->CalcDistanceFromRobot(nextPosition) << endl;

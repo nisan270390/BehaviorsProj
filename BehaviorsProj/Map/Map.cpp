@@ -7,6 +7,7 @@
 
 #include "Map.h"
 
+
 Map::Map(int width, int height, int** map)
 {
 	this->_map = map;
@@ -19,12 +20,8 @@ Map::~Map()
 	// TODO
 }
 
-Map* Map::Inflate()
+Map* Map::Inflate(int InflateAddition)
 {
-	int robotSize = MAX(ConfigManager::GetRobotHeight(),ConfigManager::GetRobotWidth());
-	double mapResulotion = ConfigManager::GetMapResolution();
-	int InflateAddition = ceil((robotSize / 2) / mapResulotion);
-
 	int** inflatedMap = new int*[height];
 
 	// Init array
@@ -65,12 +62,19 @@ Map* Map::Inflate()
 
 bool Map::IsCellEmpty(Point* point)
 {
-	if (_map[point->GetRow()][point->GetCol()] == FREE_CELL)
+	try
 	{
-		return true;
-	}
+		if (_map[point->GetRow()][point->GetCol()] == FREE_CELL)
+		{
+			return true;
+		}
 
-	return false;
+		return false;
+	}
+	catch (int ex)
+	{
+		return false;
+	}
 }
 
 int Map::GetHeight()

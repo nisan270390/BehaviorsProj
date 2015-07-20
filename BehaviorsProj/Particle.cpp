@@ -37,9 +37,9 @@ double Particle::calcBelief(Robot *rob, Map *wolrdMap)
 		double laserAngle = (((currlaser) * (0.36) - 120.0) / 180.0) * PI;
 		double distance = rob->getLaserDistance(currlaser);
 
-		obstacleX = distance * cos(_yaw + laserAngle) + _xPos;
-		obstacleY = distance * sin(_yaw + laserAngle) + _yPos;
-		Point* obstacle = new Point(obstacleX, obstacleY);
+		obstacleX = (distance * cos(_yaw + laserAngle) + _xPos) / CM_TO_METER / 2.5;
+		obstacleY = (distance * sin(_yaw + laserAngle) + _yPos) / CM_TO_METER / 2.5;
+		Point* obstacle = new Point(-obstacleY, obstacleX);
 		bool currCellIsEmpty = wolrdMap->IsCellEmpty(obstacle);
 
 		if (distance < 4.0)
@@ -53,6 +53,7 @@ double Particle::calcBelief(Robot *rob, Map *wolrdMap)
 				trueMatch++;
 			}
 		}
+
 	}
 
 	return trueMatch / (trueMatch + falseMatch);
@@ -60,9 +61,10 @@ double Particle::calcBelief(Robot *rob, Map *wolrdMap)
 
 Particle* Particle::CreateParticle()
 {
-	double newX = _xPos + (rand() % 21) / 100;
-	double newY = _yPos + (rand() % 21) / 100;
-	double newYaw = _yaw + (rand() % 61 - 30.0) * PI / 180.0;
+
+	double newX = _xPos + (rand() % 11) / 100;
+	double newY = _yPos + (rand() % 11) / 100;
+	double newYaw = _yaw + (rand() % 11 - 5.0) * PI / 180.0;
 	return new Particle(newX, newY, newYaw, _belief);
 }
 

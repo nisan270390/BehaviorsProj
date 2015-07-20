@@ -10,7 +10,7 @@ LocalizationManager::LocalizationManager(Robot* rob, Map *WolrdMap)
 	_particles_count = 1;
 	_map = WolrdMap;
 
-	for (int i=0; i< 4; i++)
+	for (int i=0; i< PARTICLES_MIN; i++)
 	{
 		_particles.push_back(par->CreateParticle());
 		_particles_count++;
@@ -33,16 +33,17 @@ void LocalizationManager::update(double deltaX, double deltaY, double deltaYaw)
 {
 	double maxBelief = 0;
 	Particle* bestParticle = NULL;
+	vector<int> parIndexToDelete;
 
 	for (int currParticle = 0; currParticle < _particles_count; currParticle++)
 	{
 		_particles[currParticle]->update(deltaX, deltaY, deltaYaw, _rob, _map);
-
 		double particleBelief = _particles[currParticle]->getBelief();
 
 		if (particleBelief < MIN_BELIEF)
 		{
-			DeleteParticle(currParticle);
+			parIndexToDelete.push_back(particleBelief);
+			//DeleteParticle(currParticle);
 		}
 		else
 		{
@@ -54,11 +55,27 @@ void LocalizationManager::update(double deltaX, double deltaY, double deltaYaw)
 		}
 	}
 
-	this->CreateParticle(bestParticle->CreateParticle());
+	for (int i=0; i< parIndexToDelete.size(); i++)
+	{
+		DeleteParticle(parIndexToDelete[i]);
+	}
+
+	if (_particles_count == 0)
+	{
+		bestParticle = new Particle(_rob->GetXPos(), _rob->GetYPos(), _rob->GetYaw(), 1);
+	}
+
+	this->CreateParticle(bestParticle);
+	while(_particles_count < PARTICLES_MIN)
+	{
+		this->CreateParticle(bestParticle);
+	}
+
 }
 
 bool LocalizationManager::CreateParticle(Particle* par)
 {
+
 	if (_particles_count < PARTICLES_MAX)
 	{
 		_particles.push_back(par);

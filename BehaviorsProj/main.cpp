@@ -23,7 +23,13 @@ int main()
 	// Read and inflate map
 	const char* mapurl = ConfigManager::GetMapUrl().erase(ConfigManager::GetMapUrl().size() - 1).c_str();
 	Map* currMap = LoadMap(mapurl);
-	Map* inflateMap = currMap->Inflate();
+
+	int robotSize = MAX(ConfigManager::GetRobotHeight(),ConfigManager::GetRobotWidth());
+	double mapResulotion = ConfigManager::GetMapResolution();
+	int InflateAddition = ceil((robotSize / 2) / mapResulotion);
+	Map* inflateMap = currMap->Inflate(InflateAddition);
+
+	Map* Maparticle = currMap->Inflate(5);
 
 	// Calculate the ratio between the grid resolution and map resolution
 	int res = ConfigManager::GetGridResolution() / ConfigManager::GetMapResolution();
@@ -49,6 +55,6 @@ int main()
 
 	Robot robot("localhost",6665);
 	PlnObstacleAvoid plnOA(&robot);
-	Manager manager(&robot, &plnOA, waypointsArr, currMap);
+	Manager manager(&robot, &plnOA, waypointsArr, Maparticle);
 	manager.run();
 }

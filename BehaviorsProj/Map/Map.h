@@ -12,13 +12,15 @@
 #include <math.h>
 #include <algorithm>
 #include <stdio.h>
+#include <iostream>
 #include "../Configuration/ConfigManager.h"
 #include "../Configuration/Constants.h"
 
+using namespace std;
 class Map{
 public :
 	Map(int width, int height, int** map);
-	Map* Inflate();
+	Map* Inflate(int InflateAddition);
 	bool IsCellEmpty(Point* point);
 	int GetWidth();
 	int GetHeight();

@@ -18,6 +18,9 @@ Plans/Plan.d: ../Plans/Plan.cpp \
  ../Plans/../behaviors/../Map/Point.h \
  ../Plans/../behaviors/../Map/../Configuration/ConfigManager.h \
  ../Plans/../behaviors/../Map/../Configuration/../Map/Point.h \
+ ../Plans/../behaviors/../Particle.h ../Plans/../behaviors/../Map/Map.h \
+ ../Plans/../behaviors/../Map/../Configuration/Constants.h \
+ ../Plans/../behaviors/../Robot.h ../Plans/../behaviors/../Map/Point.h \
  ../Plans/../Robot.h
 
 /usr/local/include/player-2.0/libplayerc++/playerc++.h:
@@ -61,5 +64,15 @@ Plans/Plan.d: ../Plans/Plan.cpp \
 ../Plans/../behaviors/../Map/../Configuration/ConfigManager.h:
 
 ../Plans/../behaviors/../Map/../Configuration/../Map/Point.h:
+
+../Plans/../behaviors/../Particle.h:
+
+../Plans/../behaviors/../Map/Map.h:
+
+../Plans/../behaviors/../Map/../Configuration/Constants.h:
+
+../Plans/../behaviors/../Robot.h:
+
+../Plans/../behaviors/../Map/Point.h:
 
 ../Plans/../Robot.h:

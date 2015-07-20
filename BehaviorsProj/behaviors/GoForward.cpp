@@ -11,10 +11,15 @@ GoForward::~GoForward() {
 
 bool GoForward::startCond(Point* p, Particle* par)
 {
-	if(this->isInfrontWaypoint(p, 2.0, par))
+	if (this->isInfrontWaypoint(p, 4.0, par))
+	{
+		std::cout << "start" << endl;
 		return true;
+	}
 	else
+	{
 		return false;
+	}
 }
 
 bool GoForward::stopCond(Point* p, Particle* par)
